@@ -25,10 +25,12 @@ public class PacketSaveSS extends SimplePacket {
 
     BufferedImage image;
     EntityPlayer player;
+    String imageID;
 
-    public PacketSaveSS(BufferedImage image, EntityPlayer player) {
+    public PacketSaveSS(BufferedImage image, EntityPlayer player, String imageID) {
         this.image = image;
         this.player = player;
+        this.imageID = imageID;
     }
 
     public PacketSaveSS() {
@@ -36,20 +38,15 @@ public class PacketSaveSS extends SimplePacket {
 
     @Override
     public void writeData(ByteBuf out) throws IOException {
-        PacketBuffer packetBuffer = new PacketBuffer(out);
-
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "png", byteArrayOutputStream);
         byte[] bytes = byteArrayOutputStream.toByteArray();
         BASE64Encoder encoder = new BASE64Encoder();
         String string = encoder.encode(bytes);
         byteArrayOutputStream.close();
-
-        //System.out.println(string);
-        System.out.println(string.length() + " SIZE");
         writeString(string, out);
+        writeString(imageID, out);
 
-        ScreenShotUitls.clientSideImage = image;
     }
 
     @Override
@@ -61,10 +58,7 @@ public class PacketSaveSS extends SimplePacket {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
         image = ImageIO.read(byteArrayInputStream);
         byteArrayInputStream.close();
-
-        System.out.println(image);
-
-        ServerScreenShotUtils.image = image;
+        imageID = readString(in);
     }
 
     @Override

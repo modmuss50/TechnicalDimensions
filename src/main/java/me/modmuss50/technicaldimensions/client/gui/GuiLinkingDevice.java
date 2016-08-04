@@ -17,8 +17,11 @@ import org.lwjgl.opengl.GL11;
 import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mark on 04/08/2016.
@@ -32,6 +35,8 @@ public class GuiLinkingDevice extends GuiScreen {
 
     World world;
     EntityPlayer player;
+
+    private static final ResourceLocation backTexture = new ResourceLocation("technicaldimensions:textures/gui/linking.png");
 
     public GuiLinkingDevice(World world, EntityPlayer player) {
         this.world = world;
@@ -55,10 +60,32 @@ public class GuiLinkingDevice extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
+        this.mc.getTextureManager().bindTexture(backTexture);
+        int i = (this.width - 176) / 2;
+        int j = (this.height - 166) / 2;
+        this.drawTexturedModalRect(i, j, 0, 0, 176, 166);
+
         if(location != null){
-          //  GL11.glScalef(4F, 4F, 0);
-            drawTextureAt(10, 10, location, ScreenShotUitls.clientSideImage);
+            drawTextureAt(i + 13, j + 7, location, ScreenShotUitls.clientSideImage);
         }
+
+        if(heldStack != null){
+            NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
+            List<String> data = new ArrayList<>();
+            if(compound != null){
+                data.add("Dim: " + compound.getInteger("dim"));
+                data.add("X: " + compound.getDouble("x"));
+                data.add("Y: " + compound.getDouble("y"));
+                data.add("Z: " + compound.getDouble("z"));
+            }
+            int p = 0;
+            for(String str : data){
+                this.fontRendererObj.drawString(str, i + 20, j + 115 + (p * 10), Color.lightGray.getRGB());
+                p++;
+            }
+        }
+
+
     }
 
     public void drawTextureAt(int x, int y, ResourceLocation resourceLocation, BufferedImage texture)
@@ -78,6 +105,7 @@ public class GuiLinkingDevice extends GuiScreen {
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if(heldStack != null){
             PacketHandler.sendPacketToServer(new PacketSendTPRequest(heldStack, world, player));
+            Minecraft.getMinecraft().displayGuiScreen(null);
         }
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
