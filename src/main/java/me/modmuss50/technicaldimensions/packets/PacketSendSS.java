@@ -47,7 +47,7 @@ public class PacketSendSS extends SimplePacket {
 
     @Override
     public void execute() {
-        if(ScreenShotUitls.imageMap.containsKey(imageID)){
+        if (ScreenShotUitls.imageMap.containsKey(imageID)) {
             ScreenShotUitls.imageMap.replace(imageID, imageData);
         } else {
             ScreenShotUitls.imageMap.put(imageID, imageData);

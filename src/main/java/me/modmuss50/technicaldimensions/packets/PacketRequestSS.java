@@ -36,7 +36,7 @@ public class PacketRequestSS extends SimplePacket {
     @Override
     public void execute() {
         String image = ServerScreenShotUtils.getScreenshotData(imageID);
-        if(image == null){
+        if (image == null) {
             //Image not found
             return;
         }

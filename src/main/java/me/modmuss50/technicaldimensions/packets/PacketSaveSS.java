@@ -45,6 +45,7 @@ public class PacketSaveSS extends SimplePacket {
         BASE64Encoder encoder = new BASE64Encoder();
         String string = encoder.encode(bytes);
         byteArrayOutputStream.close();
+        System.out.println(string.length() + " SIZE");
         writeString(string, out);
         writeString(imageID, out);
 

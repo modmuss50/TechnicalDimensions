@@ -27,6 +27,7 @@ import java.util.List;
 public class ItemLinkingDevice extends Item implements ITexturedItem {
     public ItemLinkingDevice() {
         setHasSubtypes(true);
+        setMaxStackSize(1);
     }
 
     @Override
@@ -36,11 +37,11 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
             playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
         } else {
             NBTTagCompound compound = new NBTTagCompound();
-            compound.setDouble("x", playerIn.posX);
-            compound.setDouble("y", playerIn.posY);
-            compound.setDouble("z", playerIn.posZ);
-            compound.setFloat("yaw", playerIn.rotationYaw);
-            compound.setFloat("pitch", playerIn.rotationPitch);
+            compound.setDouble("x", playerIn.prevPosX);
+            compound.setDouble("y", playerIn.prevPosY);
+            compound.setDouble("z", playerIn.prevPosZ);
+            compound.setFloat("yaw", playerIn.prevCameraYaw);
+            compound.setFloat("pitch", playerIn.prevCameraPitch);
             compound.setInteger("dim", playerIn.worldObj.provider.getDimension());
 
             ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);

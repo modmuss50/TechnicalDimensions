@@ -58,14 +58,14 @@ public class GuiLinkingDevice extends GuiScreen {
     @Override
     public void initGui() {
         super.initGui();
-        if(heldStack == null){
+        if (heldStack == null) {
             //Bad things have happened
         } else {
             Optional<String> imageID = LinkingIDHelper.getIDFromStack(heldStack);
-            if(imageID.isPresent()){
+            if (imageID.isPresent()) {
                 neededImageID = imageID.get();
-                if(ScreenShotUitls.imageMap.containsKey(imageID.get())){
-                    if(ScreenShotUitls.bufferedImageMap.containsKey(imageID.get())){
+                if (ScreenShotUitls.imageMap.containsKey(imageID.get())) {
+                    if (ScreenShotUitls.bufferedImageMap.containsKey(imageID.get())) {
                         loadImage(ScreenShotUitls.bufferedImageMap.get(imageID.get()), imageID.get());
                     } else {
                         try {
@@ -83,18 +83,17 @@ public class GuiLinkingDevice extends GuiScreen {
         }
     }
 
-    public static void loadImage(BufferedImage bufferedImage, String imageID){
+    public static void loadImage(BufferedImage bufferedImage, String imageID) {
         ResourceLocation newLoc = new ResourceLocation(imageID);
-        if(location == null || !location.equals(newLoc)){
-            location = newLoc;
-            texture = new DynamicTexture(bufferedImage.getWidth(), bufferedImage.getHeight());
-            Minecraft.getMinecraft().getTextureManager().loadTexture(location, texture);
-            bufferedImage.getRGB(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(), texture.getTextureData(), 0, bufferedImage.getWidth());
-            texture.updateDynamicTexture();
-            currenLoadedImageID = imageID;
-            image = bufferedImage;
-            hasImage = true;
-        }
+        location = newLoc;
+        texture = new DynamicTexture(bufferedImage.getWidth(), bufferedImage.getHeight());
+        Minecraft.getMinecraft().getTextureManager().loadTexture(location, texture);
+        bufferedImage.getRGB(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(), texture.getTextureData(), 0, bufferedImage.getWidth());
+        texture.updateDynamicTexture();
+        currenLoadedImageID = imageID;
+        image = bufferedImage;
+        hasImage = true;
+
     }
 
     @Override
@@ -105,7 +104,7 @@ public class GuiLinkingDevice extends GuiScreen {
         int j = (this.height - 166) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, 176, 166);
 
-        if(tempImage != null){
+        if (tempImage != null) {
             loadImage(tempImage, tempID);
             tempImage = null;
         }

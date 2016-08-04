@@ -22,13 +22,16 @@ public class ScreenShotUitls {
     public static HashMap<String, String> imageMap = new HashMap<>();
     public static HashMap<String, BufferedImage> bufferedImageMap = new HashMap<>();
 
+    static int width = 150;
+    static int height = 100;
+
     public static void takeScreenShot(ItemStack stack, EntityPlayer player) {
-        BufferedImage image = ScreenShotHelper.createScreenshot(150, 100, Minecraft.getMinecraft().getFramebuffer());
+        BufferedImage image = ScreenShotHelper.createScreenshot(width, height, Minecraft.getMinecraft().getFramebuffer());
         Optional<String> stringOptional = LinkingIDHelper.getIDFromStack(stack);
         if (!stringOptional.isPresent()) {
             return;
         }
-        PacketHandler.sendPacketToServer(new PacketSaveSS(resize(image, 150, 100), player, LinkingIDHelper.getIDFromStack(stack).get()));
+        PacketHandler.sendPacketToServer(new PacketSaveSS(resize(image, width, height), player, LinkingIDHelper.getIDFromStack(stack).get()));
     }
 
     public static BufferedImage resize(BufferedImage image, int width, int height) {

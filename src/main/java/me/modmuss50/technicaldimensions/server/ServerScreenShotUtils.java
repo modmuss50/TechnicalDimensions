@@ -29,7 +29,7 @@ public class ServerScreenShotUtils {
         if (data.screenshots == null) {
             data.screenshots = new ArrayList<>();
         }
-        if(getScreenshotData(imageID) == null){
+        if (getScreenshotData(imageID) == null) {
             data.screenshots.add(new ScreenShotSaver.ScreenShotData(imageID, imageData));
         }
         saveFile();
@@ -50,16 +50,16 @@ public class ServerScreenShotUtils {
 
     //Call when anything is added to the database
     public static void saveFile() {
-        if(file == null){
+        if (file == null) {
             file = new File(world.getSaveHandler().getWorldDirectory(), savename);
         }
-        if(data.screenshots == null || data.screenshots.isEmpty()){
+        if (data.screenshots == null || data.screenshots.isEmpty()) {
             return; //No need to save nothing
         }
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(data);
         try {
-            if(file.exists()){
+            if (file.exists()) {
                 file.delete();
             }
             FileUtils.writeStringToFile(file, json);
@@ -72,7 +72,7 @@ public class ServerScreenShotUtils {
     //Call on mod load
     public static void load() {
         saveFile();
-        if(file.exists()){
+        if (file.exists()) {
             try {
                 String json = FileUtils.readFileToString(file);
                 Gson gson = new Gson();
@@ -84,23 +84,23 @@ public class ServerScreenShotUtils {
     }
 
     @SubscribeEvent
-    public static void worldLoad(WorldEvent.Load load){
-        if(load.getWorld().provider.getDimension() == 0){
+    public static void worldLoad(WorldEvent.Load load) {
+        if (load.getWorld().provider.getDimension() == 0) {
             world = load.getWorld();
             load();
         }
     }
 
     @SubscribeEvent
-    public static void worldSave(WorldEvent.Save save){
-        if(save.getWorld().provider.getDimension() == 0){
+    public static void worldSave(WorldEvent.Save save) {
+        if (save.getWorld().provider.getDimension() == 0) {
             saveFile();
         }
     }
 
     @SubscribeEvent
-    public static void worldClose(WorldEvent.Unload unload){
-        if(unload.getWorld().provider.getDimension() == 0){
+    public static void worldClose(WorldEvent.Unload unload) {
+        if (unload.getWorld().provider.getDimension() == 0) {
             saveFile();
         }
     }
