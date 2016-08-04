@@ -31,35 +31,36 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-            if(itemStackIn.getItemDamage() == 1){
-                GuiLinkingDevice.heldStack = itemStackIn;
-                playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
-            } else {
-                if(worldIn.isRemote){
-                    ScreenShotUitls.takeScreenShot(itemStackIn, playerIn);
-                }
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setDouble("x", playerIn.posX);
-                compound.setDouble("y", playerIn.posY);
-                compound.setDouble("z", playerIn.posZ);
-                compound.setFloat("yaw", playerIn.rotationYaw);
-                compound.setFloat("pitch", playerIn.rotationPitch);
-                compound.setInteger("dim", playerIn.worldObj.provider.getDimension());
+        if (itemStackIn.getItemDamage() == 1) {
+            GuiLinkingDevice.heldStack = itemStackIn;
+            playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+        } else {
+            NBTTagCompound compound = new NBTTagCompound();
+            compound.setDouble("x", playerIn.posX);
+            compound.setDouble("y", playerIn.posY);
+            compound.setDouble("z", playerIn.posZ);
+            compound.setFloat("yaw", playerIn.rotationYaw);
+            compound.setFloat("pitch", playerIn.rotationPitch);
+            compound.setInteger("dim", playerIn.worldObj.provider.getDimension());
 
-                ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
-                itemStackIn.setItemDamage(1);
+            ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
+            itemStackIn.setItemDamage(1);
 
-                System.out.println(LinkingIDHelper.getIDFromStack(itemStackIn).get().toString());
+            if (worldIn.isRemote) {
+                ScreenShotUitls.takeScreenShot(itemStackIn, playerIn);
             }
+
+            System.out.println(LinkingIDHelper.getIDFromStack(itemStackIn).get().toString());
+        }
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, playerIn, tooltip, advanced);
-        if(stack.getItemDamage() == 1){
+        if (stack.getItemDamage() == 1) {
             NBTTagCompound compound = ItemNBTHelper.getCompound(stack, "tpData", true);
-            if(compound != null){
+            if (compound != null) {
                 tooltip.add("Dim: " + compound.getInteger("dim"));
                 tooltip.add("X: " + compound.getDouble("x"));
                 tooltip.add("Y: " + compound.getDouble("y"));
@@ -83,7 +84,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public String getTextureName(int damage) {
-        if(damage == 1){
+        if (damage == 1) {
             return "technicaldimensions:items/linking_on";
         }
         return "technicaldimensions:items/linking_off";

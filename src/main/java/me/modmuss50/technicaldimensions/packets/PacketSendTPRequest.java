@@ -42,7 +42,7 @@ public class PacketSendTPRequest extends SimplePacket {
     @Override
     public void writeData(ByteBuf out) throws IOException {
         compound = ItemNBTHelper.getCompound(stack, "tpData", true);
-        if(compound != null){
+        if (compound != null) {
             out.writeDouble(compound.getDouble("x"));
             out.writeDouble(compound.getDouble("y"));
             out.writeDouble(compound.getDouble("z"));

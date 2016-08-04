@@ -199,6 +199,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../JSON-Destroyer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../RebornCore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="masterDetails">
     <states>

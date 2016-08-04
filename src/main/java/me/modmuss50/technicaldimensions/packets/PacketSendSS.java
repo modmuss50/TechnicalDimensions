@@ -2,6 +2,7 @@ package me.modmuss50.technicaldimensions.packets;
 
 import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
+import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
@@ -21,10 +22,12 @@ import java.io.IOException;
 public class PacketSendSS extends SimplePacket {
 
 
-    EntityPlayer player;
+    String imageID;
+    String imageData;
 
-    public PacketSendSS(EntityPlayer player) {
-        this.player = player;
+    public PacketSendSS(String imageID, String imageData) {
+        this.imageID = imageID;
+        this.imageData = imageData;
     }
 
     public PacketSendSS() {
@@ -32,36 +35,31 @@ public class PacketSendSS extends SimplePacket {
 
     @Override
     public void writeData(ByteBuf out) throws IOException {
-        PacketBuffer packetBuffer = new PacketBuffer(out);
-
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageIO.write(ServerScreenShotUtils.image, "png", byteArrayOutputStream);
-        byte[] bytes = byteArrayOutputStream.toByteArray();
-        BASE64Encoder encoder = new BASE64Encoder();
-        String string = encoder.encode(bytes);
-        byteArrayOutputStream.close();
-
-        //System.out.println(string);
-        System.out.println(string.length() + " SIZE");
-        writeString(string, out);
+        writeString(imageID, out);
+        writeString(imageData, out);
     }
 
     @Override
     public void readData(ByteBuf in) throws IOException {
-        String input = readString(in);
-        byte[] imageData;
-        BASE64Decoder decoder = new BASE64Decoder();
-        imageData = decoder.decodeBuffer(input);
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
-        ScreenShotUitls.clientSideImage = ImageIO.read(byteArrayInputStream);
-        byteArrayInputStream.close();
-
-        System.out.println(ScreenShotUitls.clientSideImage);
-
+        imageID = readString(in);
+        imageData = readString(in);
     }
 
     @Override
     public void execute() {
+        if(ScreenShotUitls.imageMap.containsKey(imageID)){
+            ScreenShotUitls.imageMap.replace(imageID, imageData);
+        } else {
+            ScreenShotUitls.imageMap.put(imageID, imageData);
+        }
+        try {
+            BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(imageID));
+            ScreenShotUitls.bufferedImageMap.put(imageID, image);
+            GuiLinkingDevice.tempImage = image;
+            GuiLinkingDevice.tempID = imageID;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

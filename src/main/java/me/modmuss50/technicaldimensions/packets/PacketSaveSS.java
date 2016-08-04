@@ -26,6 +26,7 @@ public class PacketSaveSS extends SimplePacket {
     BufferedImage image;
     EntityPlayer player;
     String imageID;
+    String imageData;
 
     public PacketSaveSS(BufferedImage image, EntityPlayer player, String imageID) {
         this.image = image;
@@ -52,6 +53,9 @@ public class PacketSaveSS extends SimplePacket {
     @Override
     public void readData(ByteBuf in) throws IOException {
         String input = readString(in);
+        imageData = input;
+
+        //TODO check if needed
         byte[] imageData;
         BASE64Decoder decoder = new BASE64Decoder();
         imageData = decoder.decodeBuffer(input);
@@ -59,6 +63,8 @@ public class PacketSaveSS extends SimplePacket {
         image = ImageIO.read(byteArrayInputStream);
         byteArrayInputStream.close();
         imageID = readString(in);
+
+        ServerScreenShotUtils.registerScreenShot(imageID, input);
     }
 
     @Override

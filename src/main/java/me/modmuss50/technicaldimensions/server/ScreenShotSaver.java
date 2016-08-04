@@ -9,11 +9,11 @@ public class ScreenShotSaver {
 
     List<ScreenShotData> screenshots;
 
-    public static class ScreenShotData{
+    public static class ScreenShotData {
         public String imageID;
-        public byte[] imageData;
+        public String imageData;
 
-        public ScreenShotData(String imageID, byte[] imageData) {
+        public ScreenShotData(String imageID, String imageData) {
             this.imageID = imageID;
             this.imageData = imageData;
         }

@@ -2,6 +2,8 @@ package me.modmuss50.technicaldimensions.client.gui;
 
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.misc.CustomTeleporter;
+import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
+import me.modmuss50.technicaldimensions.packets.PacketRequestSS;
 import me.modmuss50.technicaldimensions.packets.PacketSendTPRequest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -12,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.ScreenShotHelper;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 import reborncore.common.packets.PacketHandler;
@@ -22,16 +25,24 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Mark on 04/08/2016.
  */
 public class GuiLinkingDevice extends GuiScreen {
 
+    public static ItemStack heldStack;
 
+    public static BufferedImage image;
     static DynamicTexture texture;
     static ResourceLocation location;
-    public static ItemStack heldStack;
+    public static String currenLoadedImageID;
+    public static String neededImageID;
+    private static boolean hasImage = false;
+
+    public static BufferedImage tempImage = null;
+    public static String tempID = null;
 
     World world;
     EntityPlayer player;
@@ -39,6 +50,7 @@ public class GuiLinkingDevice extends GuiScreen {
     private static final ResourceLocation backTexture = new ResourceLocation("technicaldimensions:textures/gui/linking.png");
 
     public GuiLinkingDevice(World world, EntityPlayer player) {
+        hasImage = false;
         this.world = world;
         this.player = player;
     }
@@ -46,14 +58,42 @@ public class GuiLinkingDevice extends GuiScreen {
     @Override
     public void initGui() {
         super.initGui();
-        if(ScreenShotUitls.clientSideImage != null){
-            location = new ResourceLocation("RemoteImageData");
-            this.texture = new DynamicTexture(ScreenShotUitls.clientSideImage.getWidth(), ScreenShotUitls.clientSideImage.getHeight());
-            Minecraft.getMinecraft().getTextureManager().loadTexture(location, this.texture);
-            ScreenShotUitls.clientSideImage.getRGB(0, 0, ScreenShotUitls.clientSideImage.getWidth(), ScreenShotUitls.clientSideImage.getHeight(), this.texture.getTextureData(), 0, ScreenShotUitls.clientSideImage.getWidth());
-            this.texture.updateDynamicTexture();
+        if(heldStack == null){
+            //Bad things have happened
         } else {
-            location = null;
+            Optional<String> imageID = LinkingIDHelper.getIDFromStack(heldStack);
+            if(imageID.isPresent()){
+                neededImageID = imageID.get();
+                if(ScreenShotUitls.imageMap.containsKey(imageID.get())){
+                    if(ScreenShotUitls.bufferedImageMap.containsKey(imageID.get())){
+                        loadImage(ScreenShotUitls.bufferedImageMap.get(imageID.get()), imageID.get());
+                    } else {
+                        try {
+                            BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(imageID.get()));
+                            ScreenShotUitls.bufferedImageMap.put(imageID.get(), image);
+                            loadImage(image, imageID.get());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    PacketHandler.sendPacketToServer(new PacketRequestSS(imageID.get(), player));
+                }
+            }
+        }
+    }
+
+    public static void loadImage(BufferedImage bufferedImage, String imageID){
+        ResourceLocation newLoc = new ResourceLocation(imageID);
+        if(location == null || !location.equals(newLoc)){
+            location = newLoc;
+            texture = new DynamicTexture(bufferedImage.getWidth(), bufferedImage.getHeight());
+            Minecraft.getMinecraft().getTextureManager().loadTexture(location, texture);
+            bufferedImage.getRGB(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(), texture.getTextureData(), 0, bufferedImage.getWidth());
+            texture.updateDynamicTexture();
+            currenLoadedImageID = imageID;
+            image = bufferedImage;
+            hasImage = true;
         }
     }
 
@@ -65,21 +105,26 @@ public class GuiLinkingDevice extends GuiScreen {
         int j = (this.height - 166) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, 176, 166);
 
-        if(location != null){
-            drawTextureAt(i + 13, j + 7, location, ScreenShotUitls.clientSideImage);
+        if(tempImage != null){
+            loadImage(tempImage, tempID);
+            tempImage = null;
         }
 
-        if(heldStack != null){
+        if (location != null && hasImage) {
+            drawTextureAt(i + 13, j + 7, location, image);
+        }
+
+        if (heldStack != null) {
             NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
             List<String> data = new ArrayList<>();
-            if(compound != null){
+            if (compound != null) {
                 data.add("Dim: " + compound.getInteger("dim"));
                 data.add("X: " + compound.getDouble("x"));
                 data.add("Y: " + compound.getDouble("y"));
                 data.add("Z: " + compound.getDouble("z"));
             }
             int p = 0;
-            for(String str : data){
+            for (String str : data) {
                 this.fontRendererObj.drawString(str, i + 20, j + 115 + (p * 10), Color.lightGray.getRGB());
                 p++;
             }
@@ -88,8 +133,7 @@ public class GuiLinkingDevice extends GuiScreen {
 
     }
 
-    public void drawTextureAt(int x, int y, ResourceLocation resourceLocation, BufferedImage texture)
-    {
+    public void drawTextureAt(int x, int y, ResourceLocation resourceLocation, BufferedImage texture) {
         this.mc.getTextureManager().bindTexture(resourceLocation);
         GlStateManager.enableBlend();
         Gui.drawModalRectWithCustomSizedTexture(x, y, 0.0F, 0.0F, texture.getWidth(), texture.getHeight(), texture.getWidth(), texture.getHeight());
@@ -103,7 +147,7 @@ public class GuiLinkingDevice extends GuiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        if(heldStack != null){
+        if (heldStack != null) {
             PacketHandler.sendPacketToServer(new PacketSendTPRequest(heldStack, world, player));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }

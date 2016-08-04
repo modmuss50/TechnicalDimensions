@@ -13,12 +13,12 @@ import java.util.Optional;
  */
 public class LinkingIDHelper {
 
-    public static Optional<String> getIDFromStack(ItemStack stack){
-        if(stack.getItem() != ModItems.linkingDevice){
+    public static Optional<String> getIDFromStack(ItemStack stack) {
+        if (stack.getItem() != ModItems.linkingDevice) {
             return Optional.empty();
         }
         NBTTagCompound compound = ItemNBTHelper.getCompound(stack, "tpData", true);
-        if(compound == null){
+        if (compound == null) {
             return Optional.empty();
         }
         StringBuilder sb = new StringBuilder();
