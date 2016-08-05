@@ -8,14 +8,19 @@ import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketSendSS;
 import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPRequest;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
+import me.modmuss50.technicaldimensions.world.ModDimensions;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.common.packets.AddDiscriminatorEvent;
+
+import java.io.IOException;
 
 @Mod(name = "TechnicalDimensions", modid = "technicaldimensions", version = "0.0.0")
 public class TechnicalDimensions {
@@ -47,6 +52,19 @@ public class TechnicalDimensions {
         event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketRequestTakeSS.class);
 
         event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketSendTPRequest.class);
+    }
+
+    @Mod.EventHandler
+    public static void worldLoad(FMLServerStartedEvent serverStartedEvent) {
+        try {
+            ModDimensions.worldLoad(serverStartedEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Mod.EventHandler
+    public static void unloadAll(FMLServerStoppingEvent serverStoppingEvent) {
+        ModDimensions.unloadAll(serverStoppingEvent);
     }
 
 

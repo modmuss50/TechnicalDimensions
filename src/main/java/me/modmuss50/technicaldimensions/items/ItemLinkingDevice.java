@@ -6,7 +6,10 @@ import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
+import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
+import me.modmuss50.technicaldimensions.world.DimData;
+import me.modmuss50.technicaldimensions.world.ModDimensions;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
@@ -39,7 +43,27 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        if (itemStackIn.getItemDamage() == 1) {
+        if (itemStackIn.getItemDamage() == 2) {
+//            TechnicalDimensions.proxy.setInuseStack(itemStackIn);
+//            playerIn.openGui(TechnicalDimensions.instance, 1, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+            if (!worldIn.isRemote) {
+                if (ItemNBTHelper.getCompound(itemStackIn, "dimData", true) == null) {
+                    DimData data = new DimData(ModDimensions.getNextDimName());
+                    itemStackIn.setStackDisplayName(data.name);
+                    int id = ModDimensions.createOrGetDim(data);
+                    NBTTagCompound compound = new NBTTagCompound();
+                    compound.setInteger("dimID", id);
+                    compound.setString("dimName", data.name);
+                    ItemNBTHelper.setCompound(itemStackIn, "dimData", compound);
+                    TeleportationUtils.teleportEntity(playerIn, 0, 0, 0, 0, 0, id, true);
+                } else {
+                    NBTTagCompound compound = ItemNBTHelper.getCompound(itemStackIn, "dimData", true);
+                    int dimId = compound.getInteger("dimID");
+                    TeleportationUtils.teleportEntity(playerIn, 0, 0, 0, 0, 0, dimId, true);
+                }
+
+            }
+        } else if (itemStackIn.getItemDamage() == 1) {
             TechnicalDimensions.proxy.setInuseStack(itemStackIn);
             playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
         } else {
@@ -88,15 +112,19 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         super.getSubItems(itemIn, tab, subItems);
+        subItems.add(new ItemStack(itemIn, 1, 2));
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        return "item." + this.getUnlocalizedName() + (stack.getItemDamage() == 1 ? ".on" : ".off");
+        return "item." + this.getUnlocalizedName() + (stack.getItemDamage() == 1 ? ".on" : stack.getItemDamage() == 2 ? "dim" : ".off");
     }
 
     @Override
     public String getTextureName(int damage) {
+        if (damage == 2) {
+            return "technicaldimensions:items/linking_dim";
+        }
         if (damage == 1) {
             return "technicaldimensions:items/linking_on";
         }
@@ -105,7 +133,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public int getMaxMeta() {
-        return 2;
+        return 3;
     }
 
     @Override

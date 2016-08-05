@@ -74,7 +74,7 @@ public class PacketSendTPRequest extends SimplePacket {
 //        } else {
 //            playerList.transferPlayerToDimension((EntityPlayerMP) player, dim, teleporter);
 //        }
-        TeleportationUtils.telportEntity(player, x, y, z, yaw, pitch, dim);
+        TeleportationUtils.teleportEntity(player, x, y, z, yaw, pitch, dim);
 
     }
 }

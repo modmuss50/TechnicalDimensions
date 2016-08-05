@@ -1,5 +1,6 @@
 package me.modmuss50.technicaldimensions.misc;
 
+import me.modmuss50.technicaldimensions.client.gui.GuiDimDevice;
 import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -18,6 +19,9 @@ public class GuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == 0) {
             return new GuiLinkingDevice(world, player);
+        }
+        if (ID == 1) {
+            return new GuiDimDevice(world, player);
         }
         return null;
     }

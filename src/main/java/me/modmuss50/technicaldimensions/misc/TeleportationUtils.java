@@ -5,8 +5,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.play.server.SPacketRespawn;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
@@ -14,12 +16,21 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
  */
 public class TeleportationUtils {
 
+    public static void teleportEntity(Entity entity, BlockPos pos, int dimID) {
+        teleportEntity(entity, pos.getX() + 0.5, pos.getY() + 1, pos.getZ(), 0, 0, dimID);
+    }
+    public static void teleportEntity(Entity entity, double x, double y, double z, float yaw, float pitch, int dimID) {
+        teleportEntity(entity, x, y, z, yaw, pitch, dimID, false);
+    }
+
     /**
      * A more robust way to teleport entitys
-     *
      */
-    public static void telportEntity(Entity entity, double x, double y, double z, float yaw, float pitch, int dimID) {
+    public static void teleportEntity(Entity entity, double x, double y, double z, float yaw, float pitch, int dimID, boolean findSpawn) {
         if (entity == null || entity.worldObj == null || entity.worldObj.isRemote) {
+            return;
+        }
+        if (!DimensionManager.isDimensionRegistered(dimID)) {
             return;
         }
         World originalWorld = entity.worldObj;
@@ -28,6 +39,13 @@ public class TeleportationUtils {
         WorldServer newWorldServer = (WorldServer) newWorld;
         WorldServer oldWorldServer = (WorldServer) originalWorld;
         boolean isNewWorld = entity.dimension != dimID;
+
+        if(findSpawn){
+            BlockPos spawnCoordinate = newWorldServer.getSpawnCoordinate();
+            x = (double)spawnCoordinate.getX() + 0.5;
+            y = (double)spawnCoordinate.getY() + 0.5;
+            z = (double)spawnCoordinate.getZ() + 0.5;
+        }
 
         originalWorld.updateEntityWithOptionalForce(entity, false);
         if (entity instanceof EntityPlayerMP && isNewWorld) {
