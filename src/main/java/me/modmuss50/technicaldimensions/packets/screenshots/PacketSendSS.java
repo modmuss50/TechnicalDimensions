@@ -1,8 +1,9 @@
-package me.modmuss50.technicaldimensions.packets;
+package me.modmuss50.technicaldimensions.packets.screenshots;
 
 import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
@@ -36,13 +37,19 @@ public class PacketSendSS extends SimplePacket {
     @Override
     public void writeData(ByteBuf out) throws IOException {
         writeString(imageID, out);
-        writeString(imageData, out);
+        byte[] imageBytes = PacketUtill.compressString(imageData);
+        out.writeInt(imageBytes.length);
+        out.writeBytes(imageBytes);
+       // writeString(imageData, out);
     }
 
     @Override
     public void readData(ByteBuf in) throws IOException {
         imageID = readString(in);
-        imageData = readString(in);
+
+        int size = in.readInt();
+        imageData= PacketUtill.decompressByteArray(in.readBytes(size).array());
+       // imageData = readString(in);
     }
 
     @Override

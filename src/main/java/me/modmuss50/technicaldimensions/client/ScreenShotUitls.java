@@ -1,7 +1,7 @@
 package me.modmuss50.technicaldimensions.client;
 
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
-import me.modmuss50.technicaldimensions.packets.PacketSaveSS;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,13 +25,9 @@ public class ScreenShotUitls {
     static int width = 150;
     static int height = 100;
 
-    public static void takeScreenShot(ItemStack stack, EntityPlayer player) {
+    public static void takeScreenShot(String id, EntityPlayer player) {
         BufferedImage image = ScreenShotHelper.createScreenshot(width, height, Minecraft.getMinecraft().getFramebuffer());
-        Optional<String> stringOptional = LinkingIDHelper.getIDFromStack(stack);
-        if (!stringOptional.isPresent()) {
-            return;
-        }
-        PacketHandler.sendPacketToServer(new PacketSaveSS(resize(image, width, height), player, LinkingIDHelper.getIDFromStack(stack).get()));
+        PacketHandler.sendPacketToServer(new PacketSaveSS(resize(image, width, height), player, id));
     }
 
     public static BufferedImage resize(BufferedImage image, int width, int height) {

@@ -1,7 +1,8 @@
-package me.modmuss50.technicaldimensions.packets;
+package me.modmuss50.technicaldimensions.packets.screenshots;
 
 import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
@@ -46,14 +47,18 @@ public class PacketSaveSS extends SimplePacket {
         String string = encoder.encode(bytes);
         byteArrayOutputStream.close();
         System.out.println(string.length() + " SIZE");
-        writeString(string, out);
+        byte[] imageBytes = PacketUtill.compressString(string);
+        out.writeInt(imageBytes.length);
+        out.writeBytes(imageBytes);
+        //writeString(string, out);
         writeString(imageID, out);
 
     }
 
     @Override
     public void readData(ByteBuf in) throws IOException {
-        String input = readString(in);
+        int size = in.readInt();
+        String input = PacketUtill.decompressByteArray(in.readBytes(size).array());
         imageData = input;
 
         //TODO check if needed
@@ -63,6 +68,7 @@ public class PacketSaveSS extends SimplePacket {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
         image = ImageIO.read(byteArrayInputStream);
         byteArrayInputStream.close();
+
         imageID = readString(in);
 
         ServerScreenShotUtils.registerScreenShot(imageID, input);

@@ -1,4 +1,4 @@
-package me.modmuss50.technicaldimensions.packets;
+package me.modmuss50.technicaldimensions.packets.screenshots;
 
 import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
@@ -8,23 +8,25 @@ import reborncore.common.packets.SimplePacket;
 
 import java.io.IOException;
 
-public class PacketRequestSS extends SimplePacket {
+public class PacketRequestSSData extends SimplePacket {
 
     String imageID;
     EntityPlayer player;
 
-    public PacketRequestSS(String imageID, EntityPlayer player) {
+    public PacketRequestSSData(String imageID, EntityPlayer player) {
         this.imageID = imageID;
         this.player = player;
     }
 
-    public PacketRequestSS() {
+    public PacketRequestSSData() {
     }
 
     @Override
     public void writeData(ByteBuf out) throws IOException {
         writeString(imageID, out);
         writePlayer(player, out);
+
+        System.out.println("Requesting server for " + imageID );
     }
 
     @Override

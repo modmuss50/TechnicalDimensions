@@ -6,6 +6,7 @@ import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,15 +17,21 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
 import reborncore.common.util.ItemUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Mark on 04/08/2016.
  */
 public class ItemLinkingDevice extends Item implements ITexturedItem {
+
+
+    public static ItemStack clientStack;
+
     public ItemLinkingDevice() {
         setHasSubtypes(true);
         setMaxStackSize(1);
@@ -37,21 +44,27 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
             playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
         } else {
             NBTTagCompound compound = new NBTTagCompound();
-            compound.setDouble("x", playerIn.prevPosX);
-            compound.setDouble("y", playerIn.prevPosY);
-            compound.setDouble("z", playerIn.prevPosZ);
-            compound.setFloat("yaw", playerIn.prevCameraYaw);
-            compound.setFloat("pitch", playerIn.prevCameraPitch);
+            compound.setDouble("x", round(playerIn.prevPosX));
+            compound.setDouble("y", round(playerIn.prevPosY));
+            compound.setDouble("z", round(playerIn.prevPosZ));
+            compound.setFloat("yaw", playerIn.rotationYaw);
+            compound.setFloat("pitch", playerIn.rotationPitch);
             compound.setInteger("dim", playerIn.worldObj.provider.getDimension());
+            if(!worldIn.isRemote){
+                ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
+                Optional<String> imageID = LinkingIDHelper.getIDFromStack(itemStackIn);
+                if(imageID.isPresent()){
+                    PacketHandler.sendPacketToPlayer(new PacketRequestTakeSS(imageID.get(), playerIn), playerIn);
+                    compound.setString("imageID", imageID.get());
+                }
+            } else {
+                clientStack = itemStackIn;
+            }
 
             ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
             itemStackIn.setItemDamage(1);
 
-            if (worldIn.isRemote) {
-                ScreenShotUitls.takeScreenShot(itemStackIn, playerIn);
-            }
 
-            System.out.println(LinkingIDHelper.getIDFromStack(itemStackIn).get().toString());
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
@@ -99,5 +112,12 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
     @Override
     public ModelResourceLocation getModel(ItemStack stack, EntityPlayer player, int useRemaining) {
         return new ModelResourceLocation("technicaldimensions:" + getUnlocalizedName(stack).substring(5));
+    }
+
+    public static double round(double value){
+        long factor = (long) Math.pow(10, 2);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

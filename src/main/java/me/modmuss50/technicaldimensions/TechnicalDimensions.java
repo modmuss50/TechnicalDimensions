@@ -2,16 +2,16 @@ package me.modmuss50.technicaldimensions;
 
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.GuiHandler;
-import me.modmuss50.technicaldimensions.packets.PacketRequestSS;
-import me.modmuss50.technicaldimensions.packets.PacketSaveSS;
-import me.modmuss50.technicaldimensions.packets.PacketSendSS;
-import me.modmuss50.technicaldimensions.packets.PacketSendTPRequest;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketSendSS;
+import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPRequest;
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.common.packets.AddDiscriminatorEvent;
@@ -37,8 +37,9 @@ public class TechnicalDimensions {
     @SubscribeEvent
     public void registerPackets(AddDiscriminatorEvent event) {
         event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketSaveSS.class);
-        event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketRequestSS.class);
+        event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketRequestSSData.class);
         event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketSendSS.class);
+        event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketRequestTakeSS.class);
 
         event.getPacketHandler().addDiscriminator(event.getPacketHandler().nextDiscriminator, PacketSendTPRequest.class);
     }

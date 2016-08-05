@@ -1,4 +1,4 @@
-package me.modmuss50.technicaldimensions.packets;
+package me.modmuss50.technicaldimensions.packets.teleportation;
 
 import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.misc.CustomTeleporter;

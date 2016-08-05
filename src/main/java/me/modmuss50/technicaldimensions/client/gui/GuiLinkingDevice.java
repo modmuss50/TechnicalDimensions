@@ -1,10 +1,9 @@
 package me.modmuss50.technicaldimensions.client.gui;
 
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
-import me.modmuss50.technicaldimensions.misc.CustomTeleporter;
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
-import me.modmuss50.technicaldimensions.packets.PacketRequestSS;
-import me.modmuss50.technicaldimensions.packets.PacketSendTPRequest;
+import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
+import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPRequest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
@@ -14,9 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.ScreenShotHelper;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
 import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
 
@@ -61,25 +58,29 @@ public class GuiLinkingDevice extends GuiScreen {
         if (heldStack == null) {
             //Bad things have happened
         } else {
-            Optional<String> imageID = LinkingIDHelper.getIDFromStack(heldStack);
-            if (imageID.isPresent()) {
-                neededImageID = imageID.get();
-                if (ScreenShotUitls.imageMap.containsKey(imageID.get())) {
-                    if (ScreenShotUitls.bufferedImageMap.containsKey(imageID.get())) {
-                        loadImage(ScreenShotUitls.bufferedImageMap.get(imageID.get()), imageID.get());
-                    } else {
-                        try {
-                            BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(imageID.get()));
-                            ScreenShotUitls.bufferedImageMap.put(imageID.get(), image);
-                            loadImage(image, imageID.get());
-                        } catch (IOException e) {
-                            e.printStackTrace();
+            NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
+            if(compound != null){
+                String imageID = compound.getString("imageID");
+                if (!imageID.isEmpty()) {
+                    neededImageID = imageID;
+                    if (ScreenShotUitls.imageMap.containsKey(imageID)) {
+                        if (ScreenShotUitls.bufferedImageMap.containsKey(imageID)) {
+                            loadImage(ScreenShotUitls.bufferedImageMap.get(imageID), imageID);
+                        } else {
+                            try {
+                                BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(imageID));
+                                ScreenShotUitls.bufferedImageMap.put(imageID, image);
+                                loadImage(image, imageID);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
+                    } else {
+                        PacketHandler.sendPacketToServer(new PacketRequestSSData(imageID, player));
                     }
-                } else {
-                    PacketHandler.sendPacketToServer(new PacketRequestSS(imageID.get(), player));
                 }
             }
+
         }
     }
 
@@ -110,7 +111,9 @@ public class GuiLinkingDevice extends GuiScreen {
         }
 
         if (location != null && hasImage) {
+           // GL11.glScalef(1.25F, 1.25F, 0F);
             drawTextureAt(i + 13, j + 7, location, image);
+          //  GL11.glScalef(1F, 1F, 0F);
         }
 
         if (heldStack != null) {
