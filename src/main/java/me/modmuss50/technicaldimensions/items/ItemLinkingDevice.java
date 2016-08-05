@@ -88,7 +88,6 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
     @Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
         super.getSubItems(itemIn, tab, subItems);
-        subItems.add(new ItemStack(itemIn, 1, 1));
     }
 
     @Override

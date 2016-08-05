@@ -19,7 +19,7 @@ public class TeleportationUtils {
      *
      */
     public static void telportEntity(Entity entity, double x, double y, double z, float yaw, float pitch, int dimID) {
-        if (entity.worldObj.isRemote) {
+        if (entity == null || entity.worldObj == null || entity.worldObj.isRemote) {
             return;
         }
         World originalWorld = entity.worldObj;
@@ -44,10 +44,6 @@ public class TeleportationUtils {
                 EntityPlayer player = (EntityPlayer) entity;
                 player.closeScreen();
                 originalWorld.playerEntities.remove(player);
-                if (player instanceof EntityPlayerMP) {
-                    EntityPlayerMP playerMP = (EntityPlayerMP) entity;
-                    oldWorldServer.getPlayerChunkMap().removePlayer(playerMP);
-                }
                 originalWorld.updateAllPlayersSleepingFlag();
                 int i = entity.chunkCoordX;
                 int j = entity.chunkCoordZ;
@@ -68,7 +64,7 @@ public class TeleportationUtils {
         if (entity instanceof EntityPlayerMP) {
             EntityPlayerMP player = (EntityPlayerMP) entity;
             if (isNewWorld) {
-                newWorldServer.getPlayerChunkMap().addPlayer(player);
+                //newWorldServer.getPlayerChunkMap().addPlayer(player);
                 player.interactionManager.setWorld((WorldServer) newWorld);
                 player.mcServer.getPlayerList().syncPlayerInventory(player);
                 player.mcServer.getPlayerList().updateTimeAndWeatherForPlayer(player, (WorldServer) newWorld);
