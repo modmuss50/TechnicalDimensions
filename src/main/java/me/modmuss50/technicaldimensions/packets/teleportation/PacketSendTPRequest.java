@@ -1,14 +1,11 @@
 package me.modmuss50.technicaldimensions.packets.teleportation;
 
 import io.netty.buffer.ByteBuf;
-import me.modmuss50.technicaldimensions.misc.CustomTeleporter;
+import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import reborncore.common.packets.SimplePacket;
 import reborncore.common.util.ItemNBTHelper;
 
@@ -68,15 +65,16 @@ public class PacketSendTPRequest extends SimplePacket {
 
     @Override
     public void execute() {
-        CustomTeleporter teleporter = new CustomTeleporter((WorldServer) world, x, y, z, yaw, pitch);
-        PlayerList playerList = world.getMinecraftServer().getPlayerList();
-        int playerDimID = player.worldObj.provider.getDimension();
-        if(playerDimID == dim){
-            //TODO fix this
-            player.setLocationAndAngles(x, y, z, yaw, pitch);
-        } else {
-            playerList.transferPlayerToDimension((EntityPlayerMP) player, dim, teleporter);
-        }
+//        CustomTeleporter teleporter = new CustomTeleporter((WorldServer) world, x, y, z, yaw, pitch);
+//        PlayerList playerList = world.getMinecraftServer().getPlayerList();
+//        int playerDimID = player.worldObj.provider.getDimension();
+//        if(playerDimID == dim){
+//            //TODO fix this
+//            player.setLocationAndAngles(x, y, z, yaw, pitch);
+//        } else {
+//            playerList.transferPlayerToDimension((EntityPlayerMP) player, dim, teleporter);
+//        }
+        TeleportationUtils.telportEntity(player, x, y, z, yaw, pitch, dim);
 
     }
 }

@@ -36,7 +36,7 @@ public class PacketRequestTakeSS extends SimplePacket {
     @Override
     public void readData(ByteBuf in) throws IOException {
         imageID = readString(in);
-        player = readPlayer(in);
+        //player = readPlayer(in);
     }
 
     @Override
@@ -45,11 +45,10 @@ public class PacketRequestTakeSS extends SimplePacket {
         //TODO take from render thread
         ClientEventHandler.needsToTakeScreenShot = true;
         ClientEventHandler.imageID = imageID;
-        ClientEventHandler.player = player;
 
-        if(ItemLinkingDevice.clientStack != null){
+        if (ItemLinkingDevice.clientStack != null) {
             NBTTagCompound compound = ItemNBTHelper.getCompound(ItemLinkingDevice.clientStack, "tpData", true);
-            if(compound != null){
+            if (compound != null) {
                 compound.setString("imageID", imageID);
                 System.out.println("Setting " + imageID);
             }

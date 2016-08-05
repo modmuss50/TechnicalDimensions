@@ -40,9 +40,9 @@ public class PacketSendSS extends SimplePacket {
         byte[] imageBytes = PacketUtill.compressString(imageData);
         out.writeInt(imageBytes.length);
         out.writeBytes(imageBytes);
-       // writeString(imageData, out);
+        // writeString(imageData, out);
 
-        if(out.writerIndex() > 32767){
+        if (out.writerIndex() > 32767) {
             System.out.println("HELP!");
         }
     }
@@ -52,8 +52,8 @@ public class PacketSendSS extends SimplePacket {
         imageID = readString(in);
 
         int size = in.readInt();
-        imageData= PacketUtill.decompressByteArray(in.readBytes(size).array());
-       // imageData = readString(in);
+        imageData = PacketUtill.decompressByteArray(in.readBytes(size).array());
+        // imageData = readString(in);
     }
 
     @Override

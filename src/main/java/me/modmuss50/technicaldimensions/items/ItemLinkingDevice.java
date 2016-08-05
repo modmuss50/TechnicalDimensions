@@ -40,7 +40,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         if (itemStackIn.getItemDamage() == 1) {
-            GuiLinkingDevice.heldStack = itemStackIn;
+            TechnicalDimensions.proxy.setInuseStack(itemStackIn);
             playerIn.openGui(TechnicalDimensions.instance, 0, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
         } else {
             NBTTagCompound compound = new NBTTagCompound();
@@ -50,10 +50,10 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
             compound.setFloat("yaw", playerIn.rotationYaw);
             compound.setFloat("pitch", playerIn.rotationPitch);
             compound.setInteger("dim", playerIn.worldObj.provider.getDimension());
-            if(!worldIn.isRemote){
+            if (!worldIn.isRemote) {
                 ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
                 Optional<String> imageID = LinkingIDHelper.getIDFromStack(itemStackIn);
-                if(imageID.isPresent()){
+                if (imageID.isPresent()) {
                     PacketHandler.sendPacketToPlayer(new PacketRequestTakeSS(imageID.get(), playerIn), playerIn);
                     compound.setString("imageID", imageID.get());
                 }
@@ -114,7 +114,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
         return new ModelResourceLocation("technicaldimensions:" + getUnlocalizedName(stack).substring(5));
     }
 
-    public static double round(double value){
+    public static double round(double value) {
         long factor = (long) Math.pow(10, 2);
         value = value * factor;
         long tmp = Math.round(value);

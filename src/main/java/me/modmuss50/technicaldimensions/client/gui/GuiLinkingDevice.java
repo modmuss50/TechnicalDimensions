@@ -41,6 +41,8 @@ public class GuiLinkingDevice extends GuiScreen {
     public static BufferedImage tempImage = null;
     public static String tempID = null;
 
+    boolean allowIntraTravel = true;
+
     World world;
     EntityPlayer player;
 
@@ -59,7 +61,7 @@ public class GuiLinkingDevice extends GuiScreen {
             //Bad things have happened
         } else {
             NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
-            if(compound != null){
+            if (compound != null) {
                 String imageID = compound.getString("imageID");
                 if (!imageID.isEmpty()) {
                     neededImageID = imageID;
@@ -111,9 +113,9 @@ public class GuiLinkingDevice extends GuiScreen {
         }
 
         if (location != null && hasImage) {
-           // GL11.glScalef(1.25F, 1.25F, 0F);
+            // GL11.glScalef(1.25F, 1.25F, 0F);
             drawTextureAt(i + 13, j + 7, location, image);
-          //  GL11.glScalef(1F, 1F, 0F);
+            //  GL11.glScalef(1F, 1F, 0F);
         }
 
         if (heldStack != null) {
@@ -125,7 +127,7 @@ public class GuiLinkingDevice extends GuiScreen {
                 data.add("X: " + compound.getDouble("x"));
                 data.add("Y: " + compound.getDouble("y"));
                 data.add("Z: " + compound.getDouble("z"));
-                if(dimID != player.worldObj.provider.getDimension()){
+                if (dimID != player.worldObj.provider.getDimension() || allowIntraTravel) {
                     this.fontRendererObj.drawString("Click to travel", i + 93, j + 115, Color.yellow.getRGB());
                 } else {
                     this.fontRendererObj.drawString("Cannot Travel", i + 93, j + 115, Color.red.getRGB());
@@ -160,7 +162,7 @@ public class GuiLinkingDevice extends GuiScreen {
             NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
             if (compound != null) {
                 int dimID = compound.getInteger("dim");
-                if(dimID == player.worldObj.provider.getDimension()){
+                if (dimID == player.worldObj.provider.getDimension() && !allowIntraTravel) {
                     return;
                 }
             }

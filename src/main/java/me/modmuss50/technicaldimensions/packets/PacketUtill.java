@@ -9,7 +9,7 @@ import java.util.zip.GZIPOutputStream;
  */
 public class PacketUtill {
 
-    public static byte[] compressString(String str){
+    public static byte[] compressString(String str) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         GZIPOutputStream gzipOutputStream;
         try {
@@ -23,13 +23,13 @@ public class PacketUtill {
     }
 
 
-    public static String decompressByteArray(byte[] array){
+    public static String decompressByteArray(byte[] array) {
         StringBuilder stringBuilder = new StringBuilder();
-        try{
+        try {
             GZIPInputStream gzipInputStream = new GZIPInputStream(new ByteArrayInputStream(array));
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gzipInputStream, "UTF-8"));
             String line;
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
         } catch (IOException e) {
@@ -37,7 +37,6 @@ public class PacketUtill {
         }
         return stringBuilder.toString();
     }
-
 
 
 }
