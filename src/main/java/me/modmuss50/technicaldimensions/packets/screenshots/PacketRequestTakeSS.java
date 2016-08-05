@@ -1,6 +1,7 @@
 package me.modmuss50.technicaldimensions.packets.screenshots;
 
 import io.netty.buffer.ByteBuf;
+import me.modmuss50.technicaldimensions.client.ClientEventHandler;
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.items.ItemLinkingDevice;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +43,10 @@ public class PacketRequestTakeSS extends SimplePacket {
     public void execute() {
         System.out.println("Requesting client to take " + imageID);
         //TODO take from render thread
-        ScreenShotUitls.takeScreenShot(imageID, player);
+        ClientEventHandler.needsToTakeScreenShot = true;
+        ClientEventHandler.imageID = imageID;
+        ClientEventHandler.player = player;
+
         if(ItemLinkingDevice.clientStack != null){
             NBTTagCompound compound = ItemNBTHelper.getCompound(ItemLinkingDevice.clientStack, "tpData", true);
             if(compound != null){

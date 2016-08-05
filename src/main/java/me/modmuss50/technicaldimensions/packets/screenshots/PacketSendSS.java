@@ -41,6 +41,10 @@ public class PacketSendSS extends SimplePacket {
         out.writeInt(imageBytes.length);
         out.writeBytes(imageBytes);
        // writeString(imageData, out);
+
+        if(out.writerIndex() > 32767){
+            System.out.println("HELP!");
+        }
     }
 
     @Override

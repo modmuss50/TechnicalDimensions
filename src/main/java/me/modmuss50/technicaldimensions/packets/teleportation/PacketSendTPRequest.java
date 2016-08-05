@@ -70,6 +70,13 @@ public class PacketSendTPRequest extends SimplePacket {
     public void execute() {
         CustomTeleporter teleporter = new CustomTeleporter((WorldServer) world, x, y, z, yaw, pitch);
         PlayerList playerList = world.getMinecraftServer().getPlayerList();
-        playerList.transferPlayerToDimension((EntityPlayerMP) player, dim, teleporter);
+        int playerDimID = player.worldObj.provider.getDimension();
+        if(playerDimID == dim){
+            //TODO fix this
+            player.setLocationAndAngles(x, y, z, yaw, pitch);
+        } else {
+            playerList.transferPlayerToDimension((EntityPlayerMP) player, dim, teleporter);
+        }
+
     }
 }

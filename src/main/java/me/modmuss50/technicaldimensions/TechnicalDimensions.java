@@ -10,6 +10,7 @@ import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPReques
 import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,6 +23,9 @@ public class TechnicalDimensions {
     @Mod.Instance
     public static TechnicalDimensions instance;
 
+    @SidedProxy(clientSide = "me.modmuss50.technicaldimensions.client.ClientProxy", serverSide = "me.modmuss50.technicaldimensions.CommonProxy")
+    public static CommonProxy proxy;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.load();
@@ -32,6 +36,7 @@ public class TechnicalDimensions {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        proxy.init();
     }
 
     @SubscribeEvent

@@ -120,14 +120,21 @@ public class GuiLinkingDevice extends GuiScreen {
             NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
             List<String> data = new ArrayList<>();
             if (compound != null) {
-                data.add("Dim: " + compound.getInteger("dim"));
+                int dimID = compound.getInteger("dim");
+                data.add("Dim: " + dimID);
                 data.add("X: " + compound.getDouble("x"));
                 data.add("Y: " + compound.getDouble("y"));
                 data.add("Z: " + compound.getDouble("z"));
+                if(dimID != player.worldObj.provider.getDimension()){
+                    this.fontRendererObj.drawString("Click to travel", i + 93, j + 115, Color.yellow.getRGB());
+                } else {
+                    this.fontRendererObj.drawString("Cannot Travel", i + 93, j + 115, Color.red.getRGB());
+                    this.fontRendererObj.drawString("Same Dimension", i + 93, j + 125, Color.red.getRGB());
+                }
             }
             int p = 0;
             for (String str : data) {
-                this.fontRendererObj.drawString(str, i + 20, j + 115 + (p * 10), Color.lightGray.getRGB());
+                this.fontRendererObj.drawString(str, i + 20, j + 95 + (p * 10), Color.lightGray.getRGB());
                 p++;
             }
         }
@@ -150,6 +157,13 @@ public class GuiLinkingDevice extends GuiScreen {
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (heldStack != null) {
+            NBTTagCompound compound = ItemNBTHelper.getCompound(heldStack, "tpData", true);
+            if (compound != null) {
+                int dimID = compound.getInteger("dim");
+                if(dimID == player.worldObj.provider.getDimension()){
+                    return;
+                }
+            }
             PacketHandler.sendPacketToServer(new PacketSendTPRequest(heldStack, world, player));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }

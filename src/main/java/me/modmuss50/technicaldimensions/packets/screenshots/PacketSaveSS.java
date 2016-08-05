@@ -53,6 +53,10 @@ public class PacketSaveSS extends SimplePacket {
         //writeString(string, out);
         writeString(imageID, out);
 
+        if(out.writerIndex() > 32767){
+            System.out.println("HELP!");
+        }
+
     }
 
     @Override

@@ -22,8 +22,9 @@ public class ScreenShotUitls {
     public static HashMap<String, String> imageMap = new HashMap<>();
     public static HashMap<String, BufferedImage> bufferedImageMap = new HashMap<>();
 
+    //16:9 I may need to add support for weired aspect ratios at some point
     static int width = 150;
-    static int height = 100;
+    static int height = 84;
 
     public static void takeScreenShot(String id, EntityPlayer player) {
         BufferedImage image = ScreenShotHelper.createScreenshot(width, height, Minecraft.getMinecraft().getFramebuffer());
