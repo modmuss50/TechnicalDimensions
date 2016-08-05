@@ -3,6 +3,7 @@ package me.modmuss50.technicaldimensions.misc;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.network.play.server.SPacketRespawn;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
@@ -40,11 +41,20 @@ public class TeleportationUtils {
         WorldServer oldWorldServer = (WorldServer) originalWorld;
         boolean isNewWorld = entity.dimension != dimID;
 
+        BlockPos spawnCoordinate = new BlockPos(x, y, z);
         if(findSpawn){
-            BlockPos spawnCoordinate = newWorldServer.getSpawnCoordinate();
+            spawnCoordinate = newWorldServer.getSpawnCoordinate();
             x = (double)spawnCoordinate.getX() + 0.5;
             y = (double)spawnCoordinate.getY() + 0.5;
             z = (double)spawnCoordinate.getZ() + 0.5;
+        }
+
+        if(dimID != 0 && isNewWorld){
+            for (int i = -3; i < 3; i++) {
+                for (int j = -3; j < 3; j++) {
+                    newWorld.setBlockState(spawnCoordinate.add(i, -1, j), Blocks.STONE.getDefaultState());
+                }
+            }
         }
 
         originalWorld.updateEntityWithOptionalForce(entity, false);
@@ -92,6 +102,7 @@ public class TeleportationUtils {
         }
         newWorldServer.getChunkProvider().loadChunk((int) x >> 4, (int) z >> 4);
         newWorld.updateEntityWithOptionalForce(entity, false);
+        entity.setLocationAndAngles(x, y, z, yaw, pitch);
 
     }
 

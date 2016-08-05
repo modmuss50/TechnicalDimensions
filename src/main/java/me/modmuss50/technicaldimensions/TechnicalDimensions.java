@@ -1,5 +1,6 @@
 package me.modmuss50.technicaldimensions;
 
+import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.GuiHandler;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
@@ -34,6 +35,7 @@ public class TechnicalDimensions {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.load();
+        ModBlocks.load();
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerScreenShotUtils.class);
     }
