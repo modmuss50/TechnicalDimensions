@@ -1,0 +1,21 @@
+[
+{
+  "modid": "technicaldimensions",
+  "name": "TechnicalDimensions",
+  "description": "TechnicalDimensions, its a mod that adds dimentions. And it is tech themed.",
+  "version": "$version",
+  "mcversion": "$mcversion",
+  "url": "https://github.com/modmuss50/TechnicalDimensions",
+  "updateUrl": "",
+  "authorList": [
+    "modmuss50"
+  ],
+  "credits": "Me?",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

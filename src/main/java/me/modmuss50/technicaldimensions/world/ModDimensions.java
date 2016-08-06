@@ -20,6 +20,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 public class ModDimensions {
@@ -98,6 +99,9 @@ public class ModDimensions {
         DimensionType type = DimensionType.register("technicaldimensions", dimData.name, dimId, CustomWorldProvider.class, false);
         dimData.type = type;
         dimData.id = dimId;
+        Random random = new Random();
+        dimData.seed = random.nextLong();
+        System.out.println(dimData.seed);
         DimensionManager.registerDimension(dimId, type);
         dimDataHashMap.put(dimId, dimData);
         dimDataList.add(dimData);
@@ -112,17 +116,16 @@ public class ModDimensions {
         return dimDataHashMap.get(id).type;
     }
 
-    public static String getNextDimName() {
-        return "Dim" + (dimDataList.size() + 1);
+    public static DimData getDimDataFromID(int id){
+        if(dimDataHashMap.containsKey(id)){
+            return dimDataHashMap.get(id);
+        }
+        return null;
     }
 
-    public static
-    @Nullable
-    BlockPos getDimSpawnLocation(int dim) {
-        if (!DimensionManager.isDimensionRegistered(dim)) {
-            return null;
-        }
-        return DimensionManager.getProvider(dim).getSpawnCoordinate();
+
+    public static String getNextDimName() {
+        return "Dim" + (dimDataList.size() + 1);
     }
 
 }

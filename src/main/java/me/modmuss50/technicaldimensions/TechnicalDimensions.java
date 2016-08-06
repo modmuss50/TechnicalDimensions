@@ -1,5 +1,6 @@
 package me.modmuss50.technicaldimensions;
 
+import me.modmuss50.technicaldimensions.blocks.BreakBlockEvent;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.GuiHandler;
@@ -38,6 +39,7 @@ public class TechnicalDimensions {
         ModBlocks.load();
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerScreenShotUtils.class);
+        MinecraftForge.EVENT_BUS.register(BreakBlockEvent.class);
     }
 
     @Mod.EventHandler

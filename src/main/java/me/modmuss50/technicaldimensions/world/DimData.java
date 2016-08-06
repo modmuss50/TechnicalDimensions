@@ -14,4 +14,10 @@ public class DimData {
 
     public int id;
 
+    public long seed;
+
+    public boolean alwaysDay = false;
+
+    public boolean alwaysNight = false;
+
 }

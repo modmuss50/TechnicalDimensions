@@ -13,7 +13,7 @@ public class CustomWorldProvider extends WorldProvider {
     @Override
     public IChunkGenerator createChunkGenerator() {
         //Random world each time
-        return new CustomChunkProvider(worldObj, worldObj.getSeed() + getDimension(), true, "");
+        return new CustomChunkProvider(worldObj, getSeed(), true, "");
     }
 
     @Override
@@ -34,5 +34,22 @@ public class CustomWorldProvider extends WorldProvider {
     @Override
     public BlockPos getSpawnPoint() {
         return worldObj.getTopSolidOrLiquidBlock(new BlockPos(0, 0, 0));
+    }
+
+    @Override
+    public long getSeed() {
+        return ModDimensions.getDimDataFromID(getDimension()).seed;
+    }
+
+    @Override
+    public long getWorldTime() {
+        DimData data = ModDimensions.getDimDataFromID(getDimension());
+        if(data.alwaysDay){
+            return 4284;
+        }
+        if(data.alwaysNight){
+            return 18000;
+        }
+        return super.getWorldTime();
     }
 }

@@ -2,14 +2,11 @@ package me.modmuss50.technicaldimensions.items;
 
 import me.modmuss50.jsonDestroyer.api.ITexturedItem;
 import me.modmuss50.technicaldimensions.TechnicalDimensions;
-import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
-import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
-import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
 import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
-import me.modmuss50.technicaldimensions.tiles.TilePortal;
+import me.modmuss50.technicaldimensions.tiles.TilePortalController;
 import me.modmuss50.technicaldimensions.world.DimData;
 import me.modmuss50.technicaldimensions.world.ModDimensions;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -27,7 +24,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
-import reborncore.common.util.ItemUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -99,13 +95,19 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote && stack.getItemDamage() == 1 && worldIn.getBlockState(pos).getBlock() == ModBlocks.portal) {
+        if (stack.getItemDamage() == 1 && worldIn.getBlockState(pos).getBlock() == ModBlocks.portalController) {
             TileEntity tile = worldIn.getTileEntity(pos);
-            if (tile instanceof TilePortal) {
+            if (tile instanceof TilePortalController) {
                 NBTTagCompound compound = ItemNBTHelper.getCompound(stack, "tpData", true);
                 if (compound != null) {
-                    ((TilePortal) tile).imageID = compound.getString("imageID");
-                    System.out.println(((TilePortal) tile).imageID);
+                    TilePortalController controller = (TilePortalController) tile;
+                    controller.imageID = compound.getString("imageID");
+                    controller.x = compound.getDouble("x");
+                    controller.y = compound.getDouble("y");
+                    controller.z = compound.getDouble("z");
+                    controller.yaw = compound.getFloat("yaw");
+                    controller.pitch = compound.getFloat("pitch");
+                    controller.dim = compound.getInteger("dim");
                     return EnumActionResult.SUCCESS;
                 }
 

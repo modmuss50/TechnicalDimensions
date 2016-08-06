@@ -1,7 +1,9 @@
 package me.modmuss50.technicaldimensions.init;
 
-import me.modmuss50.technicaldimensions.blocks.BlockPortal;
-import me.modmuss50.technicaldimensions.tiles.TilePortal;
+import me.modmuss50.technicaldimensions.blocks.BlockPortalController;
+import me.modmuss50.technicaldimensions.blocks.BlockPortalTeleporter;
+import me.modmuss50.technicaldimensions.tiles.TilePortalController;
+import me.modmuss50.technicaldimensions.tiles.TileTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -14,12 +16,17 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class ModBlocks {
 
-    public static Block portal;
+    public static BlockPortalController portalController;
+    public static Block teleporter;
 
     public static void load() {
-        portal = new BlockPortal();
-        registerBlock(portal, "portal");
-        GameRegistry.registerTileEntity(TilePortal.class, "technicaldimensions.portal");
+        portalController = new BlockPortalController();
+        registerBlock(portalController, "portalController");
+        GameRegistry.registerTileEntity(TilePortalController.class, "technicaldimensions.portalController");
+
+        teleporter = new BlockPortalTeleporter();
+        registerBlock(teleporter, "teleporter");
+        GameRegistry.registerTileEntity(TileTeleporter.class, "technicaldimensions.teleporter");
     }
 
 
