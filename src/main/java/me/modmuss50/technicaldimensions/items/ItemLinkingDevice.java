@@ -99,11 +99,11 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(worldIn.isRemote && stack.getItemDamage() == 1 && worldIn.getBlockState(pos).getBlock() == ModBlocks.portal){
+        if (worldIn.isRemote && stack.getItemDamage() == 1 && worldIn.getBlockState(pos).getBlock() == ModBlocks.portal) {
             TileEntity tile = worldIn.getTileEntity(pos);
-            if(tile instanceof TilePortal){
+            if (tile instanceof TilePortal) {
                 NBTTagCompound compound = ItemNBTHelper.getCompound(stack, "tpData", true);
-                if(compound != null){
+                if (compound != null) {
                     ((TilePortal) tile).imageID = compound.getString("imageID");
                     System.out.println(((TilePortal) tile).imageID);
                     return EnumActionResult.SUCCESS;

@@ -40,15 +40,16 @@ public class ModDimensions {
         File worldFile = new File(FMLCommonHandler.instance().getSavesDirectory(), FMLCommonHandler.instance().getMinecraftServerInstance().getFolderName());
         File dataFile = new File(worldFile, fileName);
 
-        if(!dataFile.exists()){
+        if (!dataFile.exists()) {
             return;
         }
 
         String json = FileUtils.readFileToString(dataFile);
         Gson gson = new Gson();
-        Type typeOfHashMap = new TypeToken<List<DimData>>() {}.getType();
+        Type typeOfHashMap = new TypeToken<List<DimData>>() {
+        }.getType();
         List<DimData> tempDataList = gson.fromJson(json, typeOfHashMap);
-        for(DimData data : tempDataList){
+        for (DimData data : tempDataList) {
             DimensionType type = DimensionType.register("technicaldimensions", data.name, data.id, CustomWorldProvider.class, false);
             DimensionManager.registerDimension(data.id, type);
             data.type = type;

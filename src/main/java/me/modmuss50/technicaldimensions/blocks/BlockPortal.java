@@ -1,5 +1,6 @@
 package me.modmuss50.technicaldimensions.blocks;
 
+import me.modmuss50.jsonDestroyer.api.ITexturedBlock;
 import me.modmuss50.technicaldimensions.misc.CreativeTab;
 import me.modmuss50.technicaldimensions.tiles.TilePortal;
 import net.minecraft.block.BlockContainer;
@@ -7,16 +8,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import reborncore.RebornCore;
 
 /**
  * Created by Mark on 05/08/2016.
  */
-public class BlockPortal extends BlockContainer {
+public class BlockPortal extends BlockContainer implements ITexturedBlock {
 
     public BlockPortal() {
         super(Material.IRON);
         setCreativeTab(CreativeTab.INSTANCE);
+        RebornCore.jsonDestroyer.registerObject(this);
     }
 
     @Override
@@ -24,18 +28,17 @@ public class BlockPortal extends BlockContainer {
         return new TilePortal();
     }
 
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
     }
 
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return false;
+    @Override
+    public String getTextureNameFromState(IBlockState state, EnumFacing side) {
+        return "technicaldimensions:blocks/portal";
     }
 
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
+    @Override
+    public int amountOfStates() {
+        return 1;
     }
 }

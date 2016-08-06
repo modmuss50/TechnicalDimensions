@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab905ed4-3f51-4c5c-823c-170e5b59cfa8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModBlocks.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TechnicalDimensions.iws" afterPath="$PROJECT_DIR$/TechnicalDimensions.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/TechnicalDimensions.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/TechnicalDimensions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/ClientProxy.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/ClientProxy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModBlocks.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModBlocks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/misc/TeleportationUtils.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/misc/TeleportationUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/world/ModDimensions.java" afterPath="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/world/ModDimensions.java" />
     </list>
     <ignored path="TechnicalDimensions.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,96 +71,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BlockPortal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1270#1271#0" expanded="true" />
+                <element signature="e#1294#1295#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FastTESR.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/client/model/animation/FastTESR.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-32">
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemLinkingDevice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RenderPortal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
+            <state relative-caret-position="868">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SplashProgress.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/fml/client/SplashProgress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="378" column="24" selection-start-line="373" selection-start-column="16" selection-end-line="378" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VertexBuffer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/renderer/VertexBuffer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GL11.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.4-nightly-20150209/7da2cff65127b558a66e8e38456174161723d3a7/lwjgl-2.9.4-nightly-20150209-sources.jar!/org/lwjgl/opengl/GL11.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="447" column="36" selection-start-line="447" selection-start-column="34" selection-end-line="447" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModelRenderer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/model/ModelRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="288" column="17" selection-start-line="288" selection-start-column="17" selection-end-line="288" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientProxy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/ClientProxy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenShotUitls.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/ScreenShotUitls.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PacketRequestSSData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/packets/screenshots/PacketRequestSSData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PacketSendSS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/packets/screenshots/PacketSendSS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -221,13 +173,13 @@
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/world/ModDimensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/world/CustomWorldProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/misc/TeleportationUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/ClientProxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/TechnicalDimensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModBlocks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java" />
       </list>
     </option>
   </component>
@@ -262,6 +214,9 @@
             <id />
           </State>
           <State>
+            <id>Abstraction issuesJava</id>
+          </State>
+          <State>
             <id>Android Lint</id>
           </State>
           <State>
@@ -274,16 +229,76 @@
             <id>Application Server Specific Inspections</id>
           </State>
           <State>
+            <id>Assignment issuesGroovy</id>
+          </State>
+          <State>
+            <id>Assignment issuesJava</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJava</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CDI(Contexts and Dependency Injection) issues</id>
+          </State>
+          <State>
+            <id>Class metricsJava</id>
+          </State>
+          <State>
+            <id>Class structureJava</id>
+          </State>
+          <State>
+            <id>Cloning issuesJava</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CodeSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>Compiler issuesJava</id>
+          </State>
+          <State>
             <id>Control flow issuesJava</id>
           </State>
           <State>
             <id>Control flow issuesJavaScript</id>
           </State>
           <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Data flow issuesJava</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
             <id>Declaration redundancyJava</id>
           </State>
           <State>
+            <id>Encapsulation issuesJava</id>
+          </State>
+          <State>
+            <id>Error handlingGroovy</id>
+          </State>
+          <State>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>Error handlingJavaScript</id>
+          </State>
+          <State>
             <id>Faces Model</id>
+          </State>
+          <State>
+            <id>Finalization issuesJava</id>
           </State>
           <State>
             <id>General</id>
@@ -295,16 +310,25 @@
             <id>Groovy</id>
           </State>
           <State>
+            <id>Guice Inspections</id>
+          </State>
+          <State>
             <id>Hibernate Issues</id>
           </State>
           <State>
             <id>Ignore</id>
           </State>
           <State>
+            <id>Inheritance issuesJava</id>
+          </State>
+          <State>
             <id>Initialization issuesJava</id>
           </State>
           <State>
             <id>Internationalization issuesJava</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
           </State>
           <State>
             <id>JBoss Seam issues</id>
@@ -316,31 +340,82 @@
             <id>JSON</id>
           </State>
           <State>
+            <id>JSP Inspections</id>
+          </State>
+          <State>
             <id>Java</id>
           </State>
           <State>
             <id>Java EE issues</id>
           </State>
           <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>JavaBeans issuesJava</id>
+          </State>
+          <State>
             <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
           </State>
           <State>
             <id>JavaScript validity issuesJavaScript</id>
           </State>
           <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
             <id>Maven</id>
+          </State>
+          <State>
+            <id>Method MetricsGroovy</id>
+          </State>
+          <State>
+            <id>Method metricsJava</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>OtherGroovy</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
           </State>
           <State>
             <id>Plugin DevKit</id>
           </State>
           <State>
+            <id>Potentially confusing code constructsGroovy</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsGroovy</id>
+          </State>
+          <State>
             <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
           </State>
           <State>
             <id>Properties Files</id>
           </State>
           <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
             <id>SQL</id>
+          </State>
+          <State>
+            <id>Security issuesJava</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
           </State>
           <State>
             <id>Spring</id>
@@ -358,16 +433,34 @@
             <id>TestNGJava</id>
           </State>
           <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+          <State>
             <id>UI Form Problems</id>
           </State>
           <State>
             <id>Validity issuesGroovy</id>
           </State>
           <State>
+            <id>Verbose or redundant code constructsJava</id>
+          </State>
+          <State>
+            <id>Visibility issuesJava</id>
+          </State>
+          <State>
+            <id>Web Services</id>
+          </State>
+          <State>
             <id>XML</id>
           </State>
           <State>
             <id>XMLSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>XPath</id>
           </State>
           <State>
             <id>XSLT</id>
@@ -447,14 +540,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="textures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -479,36 +564,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="technicaldimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="technicaldimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -539,36 +594,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="items" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="technicaldimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="init" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,95 +687,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="technicaldimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="blocks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TechnicalDimensions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="New World--" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -771,8 +708,13 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15234375" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\TMT\TechnicalDimensions\src\main\java" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Minecraft Client">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1229,12 +1171,12 @@
       <updated>1470309647710</updated>
       <workItem from="1470309649425" duration="21900000" />
       <workItem from="1470338593993" duration="235000" />
-      <workItem from="1470341548925" duration="33197000" />
+      <workItem from="1470341548925" duration="38547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55332000" />
+    <option name="totallyTimeSpent" value="60682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1254,12 +1196,12 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695095" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26760563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26760563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35861322" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35861322" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1286,12 +1228,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/world/ModDimensions.java</url>
-          <line>121</line>
+          <line>122</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="93" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1300,102 +1242,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/misc/GuiHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/misc/LinkingIDHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/packets/screenshots/PacketRequestTakeSS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/packets/screenshots/PacketSaveSS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/world/TechnicalDimensions-Views.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5370" selection-start-line="0" selection-start-column="5370" selection-end-line="0" selection-end-column="5370" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/saves/New World-/TechnicalDimensions-dimData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/saves/New World--/TechnicalDimensions-Views.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1224">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/saves/New World--/TechnicalDimensions-dimData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/server/MinecraftServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="854" column="0" selection-start-line="854" selection-start-column="0" selection-end-line="854" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/common/DimensionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/village/VillageCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/world/WorldServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="111" column="92" selection-start-line="111" selection-start-column="84" selection-end-line="111" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/world/WorldServerMulti.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -1519,14 +1365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModItems.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1591,32 +1429,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/init/ModBlocks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1661,22 +1479,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.4-nightly-20150209/7da2cff65127b558a66e8e38456174161723d3a7/lwjgl-2.9.4-nightly-20150209-sources.jar!/org/lwjgl/opengl/GL11.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="447" column="36" selection-start-line="447" selection-start-column="34" selection-end-line="447" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/renderer/Tessellator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
           <folding>
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="false" />
+            <element signature="e#1026#1027#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/renderer/tileentity/RenderItemFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.4-nightly-20150209/7da2cff65127b558a66e8e38456174161723d3a7/lwjgl-2.9.4-nightly-20150209-sources.jar!/org/lwjgl/opengl/GL11.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="2777" column="23" selection-start-line="2777" selection-start-column="23" selection-end-line="2777" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1684,6 +1510,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/fml/client/SplashProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="378" column="24" selection-start-line="373" selection-start-column="16" selection-end-line="378" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/model/ModelRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="288" column="17" selection-start-line="288" selection-start-column="17" selection-end-line="288" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1698,34 +1540,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/renderer/tileentity/RenderItemFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/model/ModelRenderer.java">
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/util/math/AxisAlignedBB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="288" column="17" selection-start-line="288" selection-start-column="17" selection-end-line="288" selection-end-column="17" />
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/fml/client/SplashProgress.java">
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/tileentity/TileEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
-          <caret line="378" column="24" selection-start-line="373" selection-start-column="16" selection-end-line="378" selection-end-column="24" />
+          <caret line="423" column="52" selection-start-line="423" selection-start-column="52" selection-end-line="423" selection-end-column="80" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraft/client/renderer/OpenGlHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="875" column="23" selection-start-line="875" selection-start-column="23" selection-end-line="875" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/tiles/TilePortal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RebornCore/src/main/java/reborncore/common/tile/TilePowerAcceptorProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="172" column="8" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RebornCore/src/main/java/reborncore/common/tile/TilePowerAcceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RebornCore/src/main/java/reborncore/common/tile/TileMachineBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xcompwiz/lookingglass/imc/IMCHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xcompwiz/lookingglass/entity/EntityCamera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xcompwiz/lookingglass/render/WorldViewRenderManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/items/ItemLinkingDevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.4-nightly-20150209/7da2cff65127b558a66e8e38456174161723d3a7/lwjgl-2.9.4-nightly-20150209-sources.jar!/org/lwjgl/opengl/GL15.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/client/model/animation/AnimationTESR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.10.2-12.18.1.2044-PROJECT(TechnicalDimensions)-sources.jar!/net/minecraftforge/client/model/animation/FastTESR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/blocks/BlockPortal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/modmuss50/technicaldimensions/client/render/RenderPortal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="124" column="30" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
+        <state relative-caret-position="868">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

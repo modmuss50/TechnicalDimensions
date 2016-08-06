@@ -23,14 +23,14 @@ public class ModBlocks {
     }
 
 
-    public static void registerBlock(Block block, String name){
+    public static void registerBlock(Block block, String name) {
         block.setRegistryName(new ResourceLocation("technicaldimensions", name));
         GameRegistry.register(block);
         block.setUnlocalizedName(block.getRegistryName().toString());
         GameRegistry.register(new ItemBlock(block), block.getRegistryName());
     }
 
-    public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass, String name){
+    public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass, String name) {
         block.setRegistryName(new ResourceLocation("technicaldimensions", name));
         block.setUnlocalizedName(block.getRegistryName().toString());
         GameRegistry.register(block);

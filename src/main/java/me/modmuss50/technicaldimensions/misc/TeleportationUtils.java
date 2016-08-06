@@ -20,6 +20,7 @@ public class TeleportationUtils {
     public static void teleportEntity(Entity entity, BlockPos pos, int dimID) {
         teleportEntity(entity, pos.getX() + 0.5, pos.getY() + 1, pos.getZ(), 0, 0, dimID);
     }
+
     public static void teleportEntity(Entity entity, double x, double y, double z, float yaw, float pitch, int dimID) {
         teleportEntity(entity, x, y, z, yaw, pitch, dimID, false);
     }
@@ -42,14 +43,14 @@ public class TeleportationUtils {
         boolean isNewWorld = entity.dimension != dimID;
 
         BlockPos spawnCoordinate = new BlockPos(x, y, z);
-        if(findSpawn){
+        if (findSpawn) {
             spawnCoordinate = newWorldServer.getSpawnCoordinate();
-            x = (double)spawnCoordinate.getX() + 0.5;
-            y = (double)spawnCoordinate.getY() + 0.5;
-            z = (double)spawnCoordinate.getZ() + 0.5;
+            x = (double) spawnCoordinate.getX() + 0.5;
+            y = (double) spawnCoordinate.getY() + 0.5;
+            z = (double) spawnCoordinate.getZ() + 0.5;
         }
 
-        if(dimID != 0 && isNewWorld){
+        if (dimID != 0 && isNewWorld) {
             for (int i = -3; i < 3; i++) {
                 for (int j = -3; j < 3; j++) {
                     newWorld.setBlockState(spawnCoordinate.add(i, -1, j), Blocks.STONE.getDefaultState());
