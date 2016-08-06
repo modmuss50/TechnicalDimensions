@@ -10,8 +10,8 @@ import net.minecraft.world.gen.ChunkProviderOverworld;
  */
 public class CustomChunkProvider {
 
-    public static IChunkGenerator getGenForWorld(DimData data, World worldIn, long seed, boolean mapFeaturesEnabledIn, String settings){
-        if(data.falt){
+    public static IChunkGenerator getGenForWorld(DimData data, World worldIn, long seed, boolean mapFeaturesEnabledIn, String settings) {
+        if (data.falt) {
             return new ChunkProviderFlat(worldIn, seed, mapFeaturesEnabledIn, "3;minecraft:bedrock,60*minecraft:stone,2*minecraft:dirt,minecraft:grass;3;village(size=50 distance=50),mineshaft(chance=0.5),biome_1,dungeon,decoration,lake,lava_lake");
         }
         //TODO get custom shit

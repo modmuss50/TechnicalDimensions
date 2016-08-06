@@ -21,8 +21,8 @@ public class TilePortalController extends TileEntity {
     public float yaw, pitch;
     public int dim;
 
-    public void tpEntity(Entity entity){
-        if(imageID != null && !imageID.isEmpty())
+    public void tpEntity(Entity entity) {
+        if (imageID != null && !imageID.isEmpty())
             TeleportationUtils.teleportEntity(entity, x, y, z, yaw, pitch, dim);
     }
 

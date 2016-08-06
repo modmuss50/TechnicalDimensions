@@ -44,10 +44,10 @@ public class CustomWorldProvider extends WorldProvider {
     @Override
     public long getWorldTime() {
         DimData data = ModDimensions.getDimDataFromID(getDimension());
-        if(data.alwaysDay){
+        if (data.alwaysDay) {
             return 4284;
         }
-        if(data.alwaysNight){
+        if (data.alwaysNight) {
             return 18000;
         }
         return super.getWorldTime();

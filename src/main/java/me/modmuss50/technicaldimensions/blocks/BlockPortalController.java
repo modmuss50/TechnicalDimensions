@@ -53,7 +53,7 @@ public class BlockPortalController extends BlockContainer implements ITexturedBl
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-        if(!worldIn.isRemote){
+        if (!worldIn.isRemote) {
             List<BlockPos> poses = getTeleporterBlockLocations(new BlockPos(pos));
             for (BlockPos blockPos : poses) {
                 System.out.println(pos);

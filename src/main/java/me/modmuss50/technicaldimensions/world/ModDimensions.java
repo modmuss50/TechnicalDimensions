@@ -116,8 +116,8 @@ public class ModDimensions {
         return dimDataHashMap.get(id).type;
     }
 
-    public static DimData getDimDataFromID(int id){
-        if(dimDataHashMap.containsKey(id)){
+    public static DimData getDimDataFromID(int id) {
+        if (dimDataHashMap.containsKey(id)) {
             return dimDataHashMap.get(id);
         }
         return null;

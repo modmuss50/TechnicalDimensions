@@ -75,14 +75,14 @@ public class BlockPortalTeleporter extends BlockContainer {
 
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
-        if(!worldIn.isRemote){
-            if(worldIn.getTileEntity(pos) instanceof TileTeleporter){
+        if (!worldIn.isRemote) {
+            if (worldIn.getTileEntity(pos) instanceof TileTeleporter) {
                 TileTeleporter tileTeleporter = (TileTeleporter) worldIn.getTileEntity(pos);
-                if(tileTeleporter.controllerPos != null){
+                if (tileTeleporter.controllerPos != null) {
                     System.out.println(tileTeleporter.controllerPos);
-                    if(worldIn.getTileEntity(tileTeleporter.controllerPos) instanceof TilePortalController){
+                    if (worldIn.getTileEntity(tileTeleporter.controllerPos) instanceof TilePortalController) {
                         TilePortalController controller = (TilePortalController) worldIn.getTileEntity(tileTeleporter.controllerPos);
-                        if(controller != null){
+                        if (controller != null) {
                             controller.tpEntity(entityIn);
                         }
                     }

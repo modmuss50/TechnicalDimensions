@@ -1,9 +1,11 @@
 package me.modmuss50.technicaldimensions;
 
 import me.modmuss50.technicaldimensions.blocks.BreakBlockEvent;
+import me.modmuss50.technicaldimensions.command.CommandTPX;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.init.ModItems;
 import me.modmuss50.technicaldimensions.misc.GuiHandler;
+import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
@@ -14,10 +16,7 @@ import me.modmuss50.technicaldimensions.world.ModDimensions;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.common.packets.AddDiscriminatorEvent;
@@ -40,6 +39,7 @@ public class TechnicalDimensions {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerScreenShotUtils.class);
         MinecraftForge.EVENT_BUS.register(BreakBlockEvent.class);
+        MinecraftForge.EVENT_BUS.register(TeleportationUtils.class);
     }
 
     @Mod.EventHandler
@@ -59,7 +59,12 @@ public class TechnicalDimensions {
     }
 
     @Mod.EventHandler
-    public static void worldLoad(FMLServerStartedEvent serverStartedEvent) {
+    public void severStarting(FMLServerStartingEvent event) {
+        event.registerServerCommand(new CommandTPX());
+    }
+
+    @Mod.EventHandler
+    public void worldLoad(FMLServerStartedEvent serverStartedEvent) {
         try {
             ModDimensions.worldLoad(serverStartedEvent);
         } catch (IOException e) {
@@ -68,7 +73,7 @@ public class TechnicalDimensions {
     }
 
     @Mod.EventHandler
-    public static void unloadAll(FMLServerStoppingEvent serverStoppingEvent) {
+    public void unloadAll(FMLServerStoppingEvent serverStoppingEvent) {
         ModDimensions.unloadAll(serverStoppingEvent);
     }
 
