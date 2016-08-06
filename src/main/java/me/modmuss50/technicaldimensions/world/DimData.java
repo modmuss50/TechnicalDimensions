@@ -16,8 +16,10 @@ public class DimData {
 
     public long seed;
 
-    public boolean alwaysDay = false;
+    public boolean alwaysDay = true;
 
     public boolean alwaysNight = false;
+
+    public boolean falt = true;
 
 }

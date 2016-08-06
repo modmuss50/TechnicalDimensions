@@ -13,7 +13,7 @@ public class CustomWorldProvider extends WorldProvider {
     @Override
     public IChunkGenerator createChunkGenerator() {
         //Random world each time
-        return new CustomChunkProvider(worldObj, getSeed(), true, "");
+        return CustomChunkProvider.getGenForWorld(ModDimensions.getDimDataFromID(getDimension()), worldObj, getSeed(), true, "");
     }
 
     @Override
