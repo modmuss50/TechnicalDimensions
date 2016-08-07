@@ -2,7 +2,7 @@
 {
   "modid": "technicaldimensions",
   "name": "TechnicalDimensions",
-  "description": "TechnicalDimensions, its a mod that adds dimentions. And it is tech themed.",
+  "description": "TechnicalDimensions. Its a mod designed around technical travel between dimensions.",
   "version": "$version",
   "mcversion": "$mcversion",
   "url": "https://github.com/modmuss50/TechnicalDimensions",
