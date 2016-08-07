@@ -21,6 +21,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
@@ -129,6 +130,10 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
                 tooltip.add("Yaw: " + compound.getFloat("yaw"));
                 tooltip.add("Pitch: " + compound.getFloat("pitch"));
             }
+        } else if (stack.getItemDamage() == 2){
+            tooltip.add(TextFormatting.RED + "THIS IS PROOF OF CONCEPT!!!");
+            tooltip.add(TextFormatting.RED + "WHEN ITS DONE YOU WILL BE ABLE TO CUSTOMIZE THE WORLD");
+            tooltip.add(TextFormatting.RED + "ITS NOW A FLAT WORLD - FULL DAY");
         }
     }
 

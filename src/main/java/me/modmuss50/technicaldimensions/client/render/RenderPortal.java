@@ -74,6 +74,11 @@ public class RenderPortal extends TileEntitySpecialRenderer<TilePortalController
             Minecraft.getMinecraft().renderEngine.bindTexture(missingLinkingDeviceTexture);
         }
 
+        if(te.rotated){
+            GL11.glRotatef(90, 1F, 0.0F, 0F);
+            GL11.glTranslatef(0F, -2.5F, -2.5F);
+        }
+
         {
             glBegin(GL_QUADS);
             glTexCoord2f(1, 0);
