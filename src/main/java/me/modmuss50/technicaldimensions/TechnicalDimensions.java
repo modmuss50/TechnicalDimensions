@@ -23,7 +23,7 @@ import reborncore.common.packets.AddDiscriminatorEvent;
 
 import java.io.IOException;
 
-@Mod(name = "TechnicalDimensions", modid = "technicaldimensions", version = "0.0.0")
+@Mod(name = "TechnicalDimensions", modid = "technicaldimensions", version = "@MODVERSION@", dependencies = "required-after:reborncore")
 public class TechnicalDimensions {
 
     @Mod.Instance
