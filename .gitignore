@@ -22,3 +22,6 @@ changelog.txt
 *.classpath
 .idea/*
 java_pid2412.hprof
+/TechnicalDimensions.iml
+/TechnicalDimensions.ipr
+/TechnicalDimensions.iws
