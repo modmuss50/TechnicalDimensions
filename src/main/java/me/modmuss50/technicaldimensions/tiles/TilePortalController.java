@@ -3,6 +3,7 @@ package me.modmuss50.technicaldimensions.tiles;
 import me.modmuss50.technicaldimensions.blocks.BlockPortalController;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -10,6 +11,8 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
@@ -39,17 +42,43 @@ public class TilePortalController extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        imageID = compound.getString("imageID");
-        if (imageID.equals("_")) {
-            imageID = "";
+        if(compound.hasKey("imageID")){
+            imageID = compound.getString("imageID");
         }
+
+        x = compound.getDouble("Lx");
+        y = compound.getDouble("Ly");
+        z = compound.getDouble("Lz");
+        yaw = compound.getFloat("yaw");
+        pitch = compound.getFloat("pitch");
+        dim = compound.getInteger("dimID");
+
+        rotated = compound.getBoolean("rotated");
+
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setString("imageID", imageID == null || imageID.isEmpty() ? "_" : imageID);
+        if(imageID != null && !imageID.isEmpty()){
+            compound.setString("imageID", imageID);
+        }
+
+        compound.setDouble("Lx", x);
+        compound.setDouble("Ly", y);
+        compound.setDouble("Lz", z);
+        compound.setFloat("yaw", yaw);
+        compound.setFloat("pitch", pitch);
+        compound.setInteger("dimID", dim);
+
+        compound.setBoolean("rotated", rotated);
+
         return compound;
+    }
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        return false;
     }
 
     @Nonnull

@@ -83,13 +83,14 @@ public class BlockPortalController extends BlockContainer implements ITexturedBl
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 
         EnumFacing enumfacing = EnumFacing.getHorizontal(MathHelper.floor_double((double)(placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3).getOpposite();
-        System.out.println(enumfacing);
+        Boolean rotated = false;
         if(enumfacing ==EnumFacing.WEST || enumfacing == EnumFacing.EAST){
             worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ROTATED, true));
+            rotated = true;
         }
 
         if (!worldIn.isRemote) {
-            List<BlockPos> poses = getTeleporterBlockLocations(new BlockPos(pos), worldIn);
+            List<BlockPos> poses = getTeleporterBlockLocations(new BlockPos(pos), worldIn, rotated);
             for (BlockPos blockPos : poses) {
                 System.out.println(pos);
                 worldIn.setBlockState(blockPos, ModBlocks.teleporter.getDefaultState());
@@ -104,20 +105,26 @@ public class BlockPortalController extends BlockContainer implements ITexturedBl
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 
-        List<BlockPos> poses = getTeleporterBlockLocations(pos, worldIn);
+        List<BlockPos> poses = getTeleporterBlockLocations(pos, worldIn, false);
         for (BlockPos blockPos : poses) {
-            worldIn.setBlockToAir(blockPos);
-            worldIn.setBlockState(blockPos, Blocks.DIAMOND_BLOCK.getDefaultState());
+            if(worldIn.getBlockState(blockPos).getBlock() == ModBlocks.teleporter){
+                worldIn.setBlockToAir(blockPos);
+            }
+        }
+        poses = getTeleporterBlockLocations(pos, worldIn, true);
+        for (BlockPos blockPos : poses) {
+            if(worldIn.getBlockState(blockPos).getBlock() == ModBlocks.teleporter){
+                worldIn.setBlockToAir(blockPos);
+            }
         }
         super.breakBlock(worldIn, pos, state);
     }
 
-    public List<BlockPos> getTeleporterBlockLocations(BlockPos pos, World world) {
-        boolean rotated = world.getBlockState(pos).getValue(ROTATED);
+    public List<BlockPos> getTeleporterBlockLocations(BlockPos pos, World world, boolean rotated) {
         List<BlockPos> poses = new ArrayList<>();
         for (int y = 0; y < 3; y++) {
             for (int x = -2; x < 3; x++) {
-                BlockPos newPos = pos.add(rotated ? x : 0, y + 1, rotated ? 0 : x);
+                BlockPos newPos = pos.add(rotated ? 0 : x, y + 1, rotated ? x : 0);
                 if(world.getBlockState(newPos).getBlock() == Blocks.AIR ||world.getBlockState(newPos).getBlock() == ModBlocks.teleporter){
                     poses.add(newPos);
                 }

@@ -79,7 +79,6 @@ public class BlockPortalTeleporter extends BlockContainer {
             if (worldIn.getTileEntity(pos) instanceof TileTeleporter) {
                 TileTeleporter tileTeleporter = (TileTeleporter) worldIn.getTileEntity(pos);
                 if (tileTeleporter.controllerPos != null) {
-                    System.out.println(tileTeleporter.controllerPos);
                     if (worldIn.getTileEntity(tileTeleporter.controllerPos) instanceof TilePortalController) {
                         TilePortalController controller = (TilePortalController) worldIn.getTileEntity(tileTeleporter.controllerPos);
                         if (controller != null) {
