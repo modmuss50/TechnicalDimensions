@@ -145,7 +145,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        return "item." + this.getUnlocalizedName() + (stack.getItemDamage() == 1 ? ".on" : stack.getItemDamage() == 2 ? "dim" : ".off");
+        return "item." + this.getUnlocalizedName() + (stack.getItemDamage() == 1 ? ".on" : stack.getItemDamage() == 2 ? ".dim" : ".off");
     }
 
     @Override

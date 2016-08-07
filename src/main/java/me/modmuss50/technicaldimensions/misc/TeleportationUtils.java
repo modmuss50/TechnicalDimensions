@@ -31,9 +31,12 @@ public class TeleportationUtils {
         if (!queuedTps.isEmpty()) {
             for (TPData data : queuedTps) {
                 if (data.entity instanceof EntityPlayerMP) {
-                    data.entity.getServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP) data.entity, data.dim, new CTeleporter((WorldServer) data.entity.worldObj, data.getX(), data.getY(), data.getZ(), data.getYaw(), data.getPitch()));
+                        data.entity.getServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP) data.entity, data.dim, new CTeleporter((WorldServer) data.entity.worldObj, data.getX(), data.getY(), data.getZ(), data.getYaw(), data.getPitch()));
                 } else {
                     //TODO move entitys
+                    if(data.dim != data.entity.worldObj.provider.getDimension()){
+                        data.entity.setLocationAndAngles(data.x, data.y, data.z, data.yaw, data.pitch);
+                    }
                 }
             }
             queuedTps.clear();
@@ -65,16 +68,6 @@ public class TeleportationUtils {
             entityIn.motionX = 0.0D;
             entityIn.motionY = 0.0D;
             entityIn.motionZ = 0.0D;
-
-
-            BlockPos spawnCoordinate = new BlockPos(x, y, z);
-            if (server.provider.getDimension() != 0) {
-                for (int i = -3; i < 3; i++) {
-                    for (int j = -3; j < 3; j++) {
-                        server.setBlockState(spawnCoordinate.add(i, 0, j), Blocks.STONE.getDefaultState());
-                    }
-                }
-            }
         }
     }
 

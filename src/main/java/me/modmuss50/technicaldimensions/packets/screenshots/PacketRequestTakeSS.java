@@ -41,8 +41,6 @@ public class PacketRequestTakeSS extends SimplePacket {
 
     @Override
     public void execute() {
-        System.out.println("Requesting client to take " + imageID);
-        //TODO take from render thread
         ClientEventHandler.needsToTakeScreenShot = true;
         ClientEventHandler.imageID = imageID;
 
@@ -50,7 +48,6 @@ public class PacketRequestTakeSS extends SimplePacket {
             NBTTagCompound compound = ItemNBTHelper.getCompound(ItemLinkingDevice.clientStack, "tpData", true);
             if (compound != null) {
                 compound.setString("imageID", imageID);
-                System.out.println("Setting " + imageID);
             }
         }
     }

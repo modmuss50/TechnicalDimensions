@@ -1,0 +1,7 @@
+itemGroup.TechnicalDimensions=Technical Dimensions
+
+item.item.technicaldimensions:linkingDevice.off.name=Linking Device (Unlinked)
+item.item.technicaldimensions:linkingDevice.on.name=Linking Device
+item.item.technicaldimensions:linkingDevice.dim.name=Dimension Creation Device
+
+tile.technicaldimensions:portalController.name=Portal Controller

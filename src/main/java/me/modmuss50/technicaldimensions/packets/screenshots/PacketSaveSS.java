@@ -46,16 +46,11 @@ public class PacketSaveSS extends SimplePacket {
         BASE64Encoder encoder = new BASE64Encoder();
         String string = encoder.encode(bytes);
         byteArrayOutputStream.close();
-        System.out.println(string.length() + " SIZE");
         byte[] imageBytes = PacketUtill.compressString(string);
         out.writeInt(imageBytes.length);
         out.writeBytes(imageBytes);
         //writeString(string, out);
         writeString(imageID, out);
-
-        if (out.writerIndex() > 32767) {
-            System.out.println("HELP!");
-        }
 
     }
 

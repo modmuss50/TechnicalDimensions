@@ -92,7 +92,6 @@ public class BlockPortalController extends BlockContainer implements ITexturedBl
         if (!worldIn.isRemote) {
             List<BlockPos> poses = getTeleporterBlockLocations(new BlockPos(pos), worldIn, rotated);
             for (BlockPos blockPos : poses) {
-                System.out.println(pos);
                 worldIn.setBlockState(blockPos, ModBlocks.teleporter.getDefaultState());
                 TileTeleporter tileTeleporter = (TileTeleporter) worldIn.getTileEntity(blockPos);
                 tileTeleporter.controllerPos = new BlockPos(pos);

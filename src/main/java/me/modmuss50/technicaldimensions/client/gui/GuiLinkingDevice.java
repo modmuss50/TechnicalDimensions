@@ -78,7 +78,7 @@ public class GuiLinkingDevice extends GuiScreen {
                             }
                         }
                     } else {
-                        PacketHandler.sendPacketToServer(new PacketRequestSSData(imageID, player));
+                        PacketHandler.sendPacketToServer(new PacketRequestSSData(imageID, Minecraft.getMinecraft().thePlayer));
                     }
                 }
             }

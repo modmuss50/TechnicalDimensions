@@ -25,8 +25,6 @@ public class PacketRequestSSData extends SimplePacket {
     public void writeData(ByteBuf out) throws IOException {
         writeString(imageID, out);
         writePlayer(player, out);
-
-        System.out.println("Requesting server for " + imageID);
     }
 
     @Override

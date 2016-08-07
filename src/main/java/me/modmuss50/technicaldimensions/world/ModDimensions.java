@@ -101,7 +101,6 @@ public class ModDimensions {
         dimData.id = dimId;
         Random random = new Random();
         dimData.seed = random.nextLong();
-        System.out.println(dimData.seed);
         DimensionManager.registerDimension(dimId, type);
         dimDataHashMap.put(dimId, dimData);
         dimDataList.add(dimData);
