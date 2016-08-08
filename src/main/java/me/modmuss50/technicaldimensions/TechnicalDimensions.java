@@ -4,6 +4,7 @@ import me.modmuss50.technicaldimensions.blocks.BreakBlockEvent;
 import me.modmuss50.technicaldimensions.command.CommandTPX;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.init.ModItems;
+import me.modmuss50.technicaldimensions.init.ModRecipes;
 import me.modmuss50.technicaldimensions.misc.GuiHandler;
 import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
 import me.modmuss50.technicaldimensions.packets.PacketUtill;
@@ -30,6 +31,7 @@ public class TechnicalDimensions {
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.load();
         ModBlocks.load();
+        ModRecipes.load();
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerScreenShotUtils.class);
         MinecraftForge.EVENT_BUS.register(BreakBlockEvent.class);
