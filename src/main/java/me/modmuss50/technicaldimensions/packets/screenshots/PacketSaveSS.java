@@ -7,14 +7,13 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Base64;
 
 /**
  * This packet sends a screenshot to the server and saves it
@@ -41,8 +40,8 @@ public class PacketSaveSS implements IMessage {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(image, "png", byteArrayOutputStream);
             byte[] bytes = byteArrayOutputStream.toByteArray();
-            BASE64Encoder encoder = new BASE64Encoder();
-            String string = encoder.encode(bytes);
+            Base64.Encoder encoder = Base64.getEncoder();
+            String string = encoder.encodeToString(bytes);
             byteArrayOutputStream.close();
             byte[] imageBytes = PacketUtill.compressString(string);
             out.writeInt(imageBytes.length);
@@ -64,8 +63,8 @@ public class PacketSaveSS implements IMessage {
 
             //TODO check if needed
             byte[] imageData;
-            BASE64Decoder decoder = new BASE64Decoder();
-            imageData = decoder.decodeBuffer(input);
+            Base64.Decoder decoder = Base64.getDecoder();
+            imageData = decoder.decode(input);
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
             image = ImageIO.read(byteArrayInputStream);
             byteArrayInputStream.close();

@@ -5,13 +5,13 @@ import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ScreenShotHelper;
-import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 
 public class ScreenShotUitls {
@@ -42,8 +42,8 @@ public class ScreenShotUitls {
 
     public static BufferedImage imageFromString(String string) throws IOException {
         byte[] imageData;
-        BASE64Decoder decoder = new BASE64Decoder();
-        imageData = decoder.decodeBuffer(string);
+        Base64.Decoder decoder = Base64.getDecoder();
+        imageData = decoder.decode(string);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageData);
         return ImageIO.read(byteArrayInputStream);
     }
