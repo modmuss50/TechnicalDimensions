@@ -1,17 +1,16 @@
 package me.modmuss50.technicaldimensions.client.render;
 
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
 import me.modmuss50.technicaldimensions.tiles.TilePortalController;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import reborncore.common.packets.PacketHandler;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -54,7 +53,7 @@ public class RenderPortal extends TileEntitySpecialRenderer<TilePortalController
                         }
                     }
                 } else {
-                    PacketHandler.sendPacketToServer(new PacketRequestSSData(imageID, Minecraft.getMinecraft().thePlayer));
+                    PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
                 }
             }
         }
@@ -74,7 +73,7 @@ public class RenderPortal extends TileEntitySpecialRenderer<TilePortalController
             Minecraft.getMinecraft().renderEngine.bindTexture(missingLinkingDeviceTexture);
         }
 
-        if(te.rotated){
+        if (te.rotated) {
             GL11.glRotatef(90, 1F, 0.0F, 0F);
             GL11.glTranslatef(0F, -2.5F, -2.5F);
         }

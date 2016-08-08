@@ -1,26 +1,14 @@
 package me.modmuss50.technicaldimensions.client.gui;
 
-import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
-import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
-import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPRequest;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import reborncore.common.packets.PacketHandler;
-import reborncore.common.util.ItemNBTHelper;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mark on 05/08/2016.

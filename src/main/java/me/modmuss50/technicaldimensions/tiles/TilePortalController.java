@@ -42,7 +42,7 @@ public class TilePortalController extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if(compound.hasKey("imageID")){
+        if (compound.hasKey("imageID")) {
             imageID = compound.getString("imageID");
         }
 
@@ -60,7 +60,7 @@ public class TilePortalController extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        if(imageID != null && !imageID.isEmpty()){
+        if (imageID != null && !imageID.isEmpty()) {
             compound.setString("imageID", imageID);
         }
 
@@ -101,8 +101,8 @@ public class TilePortalController extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        if(worldObj.getTotalWorldTime() % 20 == 0){
-            if(worldObj.getBlockState(getPos()).getBlock() == ModBlocks.portalController){
+        if (worldObj.getTotalWorldTime() % 20 == 0) {
+            if (worldObj.getBlockState(getPos()).getBlock() == ModBlocks.portalController) {
                 rotated = worldObj.getBlockState(getPos()).getValue(BlockPortalController.ROTATED);
             }
 

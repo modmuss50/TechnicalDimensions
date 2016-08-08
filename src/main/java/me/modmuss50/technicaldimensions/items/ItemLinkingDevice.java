@@ -5,6 +5,7 @@ import me.modmuss50.technicaldimensions.TechnicalDimensions;
 import me.modmuss50.technicaldimensions.init.ModBlocks;
 import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
 import me.modmuss50.technicaldimensions.misc.TeleportationUtils;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
 import me.modmuss50.technicaldimensions.tiles.TilePortalController;
 import me.modmuss50.technicaldimensions.world.DimData;
@@ -12,6 +13,7 @@ import me.modmuss50.technicaldimensions.world.ModDimensions;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,7 +25,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
 
 import java.util.List;
@@ -79,7 +80,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
                 ItemNBTHelper.setCompound(itemStackIn, "tpData", compound);
                 Optional<String> imageID = LinkingIDHelper.getIDFromStack(itemStackIn);
                 if (imageID.isPresent()) {
-                    PacketHandler.sendPacketToPlayer(new PacketRequestTakeSS(imageID.get(), playerIn), playerIn);
+                    PacketUtill.INSTANCE.sendTo(new PacketRequestTakeSS(imageID.get()), (EntityPlayerMP) playerIn);
                     compound.setString("imageID", imageID.get());
                 }
             } else {
@@ -130,7 +131,7 @@ public class ItemLinkingDevice extends Item implements ITexturedItem {
                 tooltip.add("Yaw: " + compound.getFloat("yaw"));
                 tooltip.add("Pitch: " + compound.getFloat("pitch"));
             }
-        } else if (stack.getItemDamage() == 2){
+        } else if (stack.getItemDamage() == 2) {
             tooltip.add(TextFormatting.RED + "THIS IS PROOF OF CONCEPT!!!");
             tooltip.add(TextFormatting.RED + "WHEN ITS DONE YOU WILL BE ABLE TO CUSTOMIZE THE WORLD");
             tooltip.add(TextFormatting.RED + "ITS NOW A FLAT WORLD - FULL DAY");

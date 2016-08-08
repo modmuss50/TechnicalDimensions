@@ -4,23 +4,18 @@ import io.netty.buffer.ByteBuf;
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
 import me.modmuss50.technicaldimensions.client.gui.GuiLinkingDevice;
 import me.modmuss50.technicaldimensions.packets.PacketUtill;
-import me.modmuss50.technicaldimensions.server.ServerScreenShotUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
-import reborncore.common.packets.SimplePacket;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
  * Created by Mark on 04/08/2016.
  */
-public class PacketSendSS extends SimplePacket {
+public class PacketSendSS implements IMessage {
 
 
     String imageID;
@@ -35,8 +30,10 @@ public class PacketSendSS extends SimplePacket {
     }
 
     @Override
-    public void writeData(ByteBuf out) throws IOException {
-        writeString(imageID, out);
+    public void toBytes(ByteBuf out) {
+        PacketBuffer packetBuffer = new PacketBuffer(out);
+        out.writeInt(imageID.length());
+        packetBuffer.writeString(imageID);
         byte[] imageBytes = PacketUtill.compressString(imageData);
         out.writeInt(imageBytes.length);
         out.writeBytes(imageBytes);
@@ -45,29 +42,34 @@ public class PacketSendSS extends SimplePacket {
     }
 
     @Override
-    public void readData(ByteBuf in) throws IOException {
-        imageID = readString(in);
+    public void fromBytes(ByteBuf in) {
+        PacketBuffer buffer = new PacketBuffer(in);
+        imageID = buffer.readStringFromBuffer(in.readInt());
 
         int size = in.readInt();
         imageData = PacketUtill.decompressByteArray(in.readBytes(size).array());
         // imageData = readString(in);
     }
 
-    @Override
-    public void execute() {
-        if (ScreenShotUitls.imageMap.containsKey(imageID)) {
-            ScreenShotUitls.imageMap.replace(imageID, imageData);
-        } else {
-            ScreenShotUitls.imageMap.put(imageID, imageData);
-        }
-        try {
-            BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(imageID));
-            ScreenShotUitls.bufferedImageMap.put(imageID, image);
-            GuiLinkingDevice.tempImage = image;
-            GuiLinkingDevice.tempID = imageID;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static class SendSSHandler implements IMessageHandler<PacketSendSS, IMessage> {
 
+        @Override
+        public IMessage onMessage(PacketSendSS message, MessageContext ctx) {
+            if (ScreenShotUitls.imageMap.containsKey(message.imageID)) {
+                ScreenShotUitls.imageMap.replace(message.imageID, message.imageData);
+            } else {
+                ScreenShotUitls.imageMap.put(message.imageID, message.imageData);
+            }
+            try {
+                BufferedImage image = ScreenShotUitls.imageFromString(ScreenShotUitls.imageMap.get(message.imageID));
+                ScreenShotUitls.bufferedImageMap.put(message.imageID, image);
+                GuiLinkingDevice.tempImage = image;
+                GuiLinkingDevice.tempID = message.imageID;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
+
 }

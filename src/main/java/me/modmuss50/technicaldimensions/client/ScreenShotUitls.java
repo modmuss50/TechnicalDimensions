@@ -1,12 +1,10 @@
 package me.modmuss50.technicaldimensions.client;
 
-import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketSaveSS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ScreenShotHelper;
-import reborncore.common.packets.PacketHandler;
 import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
@@ -15,7 +13,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Optional;
 
 public class ScreenShotUitls {
 
@@ -28,7 +25,7 @@ public class ScreenShotUitls {
 
     public static void takeScreenShot(String id, EntityPlayer player) {
         BufferedImage image = ScreenShotHelper.createScreenshot(width, height, Minecraft.getMinecraft().getFramebuffer());
-        PacketHandler.sendPacketToServer(new PacketSaveSS(resize(image, width, height), player, id));
+        PacketUtill.INSTANCE.sendToServer(new PacketSaveSS(resize(image, width, height), id));
     }
 
     public static BufferedImage resize(BufferedImage image, int width, int height) {

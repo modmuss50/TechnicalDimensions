@@ -1,7 +1,7 @@
 package me.modmuss50.technicaldimensions.client.gui;
 
 import me.modmuss50.technicaldimensions.client.ScreenShotUitls;
-import me.modmuss50.technicaldimensions.misc.LinkingIDHelper;
+import me.modmuss50.technicaldimensions.packets.PacketUtill;
 import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestSSData;
 import me.modmuss50.technicaldimensions.packets.teleportation.PacketSendTPRequest;
 import net.minecraft.client.Minecraft;
@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import reborncore.common.packets.PacketHandler;
 import reborncore.common.util.ItemNBTHelper;
 
 import java.awt.*;
@@ -22,7 +21,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Mark on 04/08/2016.
@@ -78,7 +76,7 @@ public class GuiLinkingDevice extends GuiScreen {
                             }
                         }
                     } else {
-                        PacketHandler.sendPacketToServer(new PacketRequestSSData(imageID, Minecraft.getMinecraft().thePlayer));
+                        PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
                     }
                 }
             }
@@ -166,7 +164,7 @@ public class GuiLinkingDevice extends GuiScreen {
                     return;
                 }
             }
-            PacketHandler.sendPacketToServer(new PacketSendTPRequest(heldStack, world, player));
+            PacketUtill.INSTANCE.sendToServer(new PacketSendTPRequest(heldStack));
             Minecraft.getMinecraft().displayGuiScreen(null);
         }
         super.mouseClicked(mouseX, mouseY, mouseButton);

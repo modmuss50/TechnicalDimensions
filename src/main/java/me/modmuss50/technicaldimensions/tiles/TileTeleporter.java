@@ -19,7 +19,7 @@ public class TileTeleporter extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if(compound.hasKey("Lx")){
+        if (compound.hasKey("Lx")) {
             controllerPos = new BlockPos(compound.getInteger("Lx"), compound.getInteger("Ly"), compound.getInteger("Lz"));
         }
 
@@ -28,7 +28,7 @@ public class TileTeleporter extends TileEntity {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        if(controllerPos != null){
+        if (controllerPos != null) {
             compound.setInteger("Lx", controllerPos.getX());
             compound.setInteger("Ly", controllerPos.getY());
             compound.setInteger("Lz", controllerPos.getZ());

@@ -1,11 +1,7 @@
 package me.modmuss50.technicaldimensions.misc;
 
-import me.modmuss50.technicaldimensions.packets.screenshots.PacketRequestTakeSS;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.network.play.server.SPacketRespawn;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
@@ -31,10 +27,10 @@ public class TeleportationUtils {
         if (!queuedTps.isEmpty()) {
             for (TPData data : queuedTps) {
                 if (data.entity instanceof EntityPlayerMP) {
-                        data.entity.getServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP) data.entity, data.dim, new CTeleporter((WorldServer) data.entity.worldObj, data.getX(), data.getY(), data.getZ(), data.getYaw(), data.getPitch()));
+                    data.entity.getServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP) data.entity, data.dim, new CTeleporter((WorldServer) data.entity.worldObj, data.getX(), data.getY(), data.getZ(), data.getYaw(), data.getPitch()));
                 } else {
                     //TODO move entitys
-                    if(data.dim != data.entity.worldObj.provider.getDimension()){
+                    if (data.dim != data.entity.worldObj.provider.getDimension()) {
                         data.entity.setLocationAndAngles(data.x, data.y, data.z, data.yaw, data.pitch);
                     }
                 }
