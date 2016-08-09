@@ -20,6 +20,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -43,6 +44,8 @@ public class GuiLinkingDevice extends GuiScreen {
 
     World world;
     EntityPlayer player;
+
+    private static HashMap<String, Boolean> hasRequestedImage = new HashMap<>();
 
     private static final ResourceLocation backTexture = new ResourceLocation("technicaldimensions:textures/gui/linking.png");
 
@@ -76,7 +79,11 @@ public class GuiLinkingDevice extends GuiScreen {
                             }
                         }
                     } else {
-                        PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
+                        if(!hasRequestedImage.containsKey(imageID)){
+                            PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
+                            hasRequestedImage.put(imageID, true);
+                        }
+
                     }
                 }
             }

@@ -26,6 +26,8 @@ public class RenderPortal extends TileEntitySpecialRenderer<TilePortalController
 
     static HashMap<String, ImageData> imageDataHashMap = new HashMap<>();
     private static final ResourceLocation missingLinkingDeviceTexture = new ResourceLocation("technicaldimensions:textures/404.png");
+    private static HashMap<String, Boolean> hasRequestedImage = new HashMap<>();
+
 
     @Override
     public void renderTileEntityAt(TilePortalController te, double x, double y, double z, float partialTicks, int destroyStage) {
@@ -53,7 +55,10 @@ public class RenderPortal extends TileEntitySpecialRenderer<TilePortalController
                         }
                     }
                 } else {
-                    PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
+                    if(!hasRequestedImage.containsKey(imageID)){
+                        PacketUtill.INSTANCE.sendToServer(new PacketRequestSSData(imageID));
+                        hasRequestedImage.put(imageID, true);
+                    }
                 }
             }
         }
